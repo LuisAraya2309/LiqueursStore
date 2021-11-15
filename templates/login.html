@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre+Medium&display=swap" rel="stylesheet" />
+        <title>Inicio de Sesión</title>
         <link href= "{{ url_for('static',filename='css/loginStyle.css') }}" type = "text/css" rel="stylesheet" />
-        <title>Document</title>
+        
     </head>
     <body>
-        <div class="v983_82"><span class="v983_83">Tienda Bunbury </span>
-        <span class="v983_84">→ ¡Calidad asegurada en licores! 
-        → ¡Envíos hasta su casa!<br> 
-        → ¡Los mejores precios!</span>
-        <div class="v983_85"></div>
-        <div class="v983_86"></div>
-        <span class="v983_87">Nombre de usuario</span>
-        <span class="v983_88">Contraseña</span>
-        <span class="v983_89">Iniciar sesión</span>
-        <span class="v983_90">¡Bienvenido!</span>
-        <span class="v983_91">¿Aún no tienes una cuenta?</span>
-        <span class="v983_92">Registrarse</span>
-        <span class="v983_93">Pneuma Developers S.A
-        @2021</span>
-        <div class="v983_94"></div>
-        <div class="v983_95">
-        </div>
-        <div class="v983_96"></div>
-        <div class="v983_97"></div>
-        <div class="v983_98"></div>
-        <div class="v983_99"></div>
-        <span class="v983_100">Inicio de Sesión</span>
-        <div class="v983_103"></div>
-        </div>
+        <div class="v503_133">
+            <span class="v503_134">tb <br>
+            tienda bunbury. </span>
+           
+            <form action = "/signIn" method = "post">
+                <div class = "Rectangle"></div> 
+                <div class="v503_138"></div>
+                <div class="v795_84"></div>
+                <span class="v795_87">Nombre de usuario</span> 
+                <span class="v794_82">Contraseña</span>
+                <span class="v795_85">Iniciar sesión</span>
+                <span class="v795_83">¡Bienvenido!</span>
+                <span class="v794_84">¿Aún no tienes una cuenta?</span>
+                <a class = "Registrarse" href="/beginSignUp">Registrarse</a>
+                <input class = "inputContraUsuario" type = "password" id = "password" name = "password"></input>
+                <input class = "inputNomUsuario" id = "user" name = "user"></input>
+                <input class = "inputInicioSesion" type = "submit" value = "Iniciar sesión"></input>
+                <div class="v796_91"></div>
+                <div class="v796_93"></div>
+                <div class="v796_95"></div>
+            </form>     
+            
+        <div class="v796_99"></div></div>
+
+        <span class="v503_145">Pneuma Developers S.A
+            @2021</span>
+            
+
     </body>
 </html>
