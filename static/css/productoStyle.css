@@ -88,7 +88,7 @@ body {
   text-align: left;
 }
 .v1021_125 {
-  width: 246px;
+  width: 100%;
   color: rgba(22,20,18,1);
   position: absolute;
   top: 335px;
@@ -100,7 +100,7 @@ body {
   text-align: left;
 }
 .v1021_126 {
-  width: 77px;
+  width: 100%;
   color: rgba(22,20,18,1);
   position: absolute;
   top: 391px;
@@ -181,7 +181,7 @@ body {
   width: 392px;
   color: rgba(100,98,95,1);
   position: absolute;
-  top: 543px;
+  top: 600px;
   left: 876px;
   font-family: Abel;
   font-weight: Regular;
@@ -194,7 +194,7 @@ body {
   width: 94px;
   color: rgba(22,20,18,1);
   position: absolute;
-  top: 671px;
+  top: 651px;
   left: 876px;
   font-family: Karla;
   font-weight: Bold;

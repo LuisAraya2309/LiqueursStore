@@ -16,6 +16,19 @@ INSERT INTO dbo.PaymentTypes
 		'Add'
 	)
 
+--Insertar tipos de Cliente
+INSERT INTO dbo.CustomerType
+	VALUES(
+	'Normal'
+	)
+
+INSERT INTO dbo.CustomerType
+	VALUES(
+	'VIP'
+	)
+
+
+
 --Insertar comidas
 INSERT INTO dbo.Food
 	VALUES(
@@ -123,19 +136,6 @@ INSERT INTO dbo.GreatCombinations --Jack Daniels
 
 
 
---INSERTAR TIPOS DE CLIENTE
-INSERT INTO dbo.CustomerType
-	VALUES
-	(
-	'Normal'
-	)
-
-INSERT INTO dbo.CustomerType
-	VALUES
-	(
-	'VIP'
-	)
-
 
 
 
@@ -151,6 +151,7 @@ INSERT INTO dbo.CustomerType
 
 
 --BORRAR DATOS
+--Taxes Report
 
 
 
@@ -159,10 +160,19 @@ Borrar Transacciones
 DELETE FROM Transactions
 DBCC CHECKIDENT (Transactions,RESEED,0)
 */
+/*
+BORRAR LICORES
+DELETE FROM Stock
+
+DELETE FROM LiqueurInfo
+DELETE FROM Liqueurs
+
+DBCC CHECKIDENT (LiqueurInfo,RESEED,0)
+DBCC CHECKIDENT (Liqueurs,RESEED,0)
+DBCC CHECKIDENT (Stock,RESEED,0)
 
 
-
-
+*/
 --Borrar subsidiary
 /*
 	
@@ -200,21 +210,10 @@ DBCC CHECKIDENT(GreatCombinations,RESEED,0)
 DELETE FROM Food
 DBCC CHECKIDENT(Food,RESEED,0)
 
-
-
-BORRAR LICORES
-DELETE FROM Stock
-
-DELETE FROM Liqueurs
-DELETE FROM LiqueurInfo
-
-DBCC CHECKIDENT (Liqueurs,RESEED,0)
-DBCC CHECKIDENT (LiqueurInfo,RESEED,0)
-
-
 */
 
 /*
 DELETE FROM Errors
+DBCC CHECKIDENT(Errors,RESEED,0)
 
 *

@@ -13,8 +13,7 @@ app = Flask(__name__)
 username =""
 api = "http://localhost:3001/"
 imageSrc = ""
-country=""
-subsidiary="Costa Rica"
+country="Costa Rica"
 '''
 newRequest = api+'users'
 resp = requests.get(newRequest)
@@ -29,14 +28,14 @@ p = resp.json()
 #Routes
 @app.route('/',methods=['GET'])   #Login page
 def login():
-    
     return render_template('login.html')
 
 @app.route('/signIn',methods=['GET','POST'])  #Sign in
 def validateUser():
     user = request.form['user']
     password = request.form['password']
-    dbConnection = connectToDatabase(subsidiary)
+    
+    dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
             query = 'EXEC sp_SignIn ? , ? , ?'
@@ -80,7 +79,7 @@ def validateUser():
 @app.route('/queryProduct',methods=['GET','POST'])
 def queryProduct():
     productName = request.form['productName']
-    dbConnection = connectToDatabase(subsidiary)
+    dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
             query = 'EXEC sp_ViewProduct ? , ?'
