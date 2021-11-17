@@ -111,10 +111,11 @@ body {
   opacity: 1;
   text-align: left;
 }
+
 .v1023_215 {
   width: 382px;
   height: 494px;
-  background: url("../images/baileys.jpg");
+  background: url("../images/temp.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -124,6 +125,7 @@ body {
   left: 237px;
   overflow: hidden;
 }
+
 .v1026_230 {
   width: 505px;
   height: 71px;
