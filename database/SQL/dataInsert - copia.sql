@@ -72,6 +72,10 @@ INSERT INTO dbo.Food
 	)
 
 --INSERTAR USUARIOS
+--Crear direcciones para los usuarios
+DECLARE @x GEOGRAPHY;
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+
 EXEC sp_SignUp 'Luis Carlos Araya Mata','luistec2309@gmail.com',84105826,NULL,19,'luis2309','admin123','Administrator',0;
 EXEC sp_SignUp 'Josue Gutierrez Piedra','josuegupi2309@gmail.com',87430908,NULL,20,'gupi08','flor420','Biller',0;
 EXEC sp_SignUp 'Sebastian Diaz Obando','sebasDiaz@gmail.com',96397630,NULL,25,'sebas63','kmy45','Biller',0;
