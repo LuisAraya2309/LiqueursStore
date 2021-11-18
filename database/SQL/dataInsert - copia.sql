@@ -126,32 +126,32 @@ INSERT INTO dbo.Subsidiary
 --Insertar productos en Cartago
 DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 --Baileys
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,30,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,35,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,42,'Alajuela' ,'luis2309',@imagenProducto,0
 
 --Jack Daniels
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,50,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,40,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,60,'Alajuela' ,'luis2309',@imagenProducto,0
 
 
 --Bacardi
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,120,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,102,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,140,'Alajuela' ,'luis2309',@imagenProducto,0
 
 --Cortez
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\cortez.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,200,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,150,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,50,'Alajuela' ,'luis2309',@imagenProducto,0
 
 --DonJulio
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\donJulio.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,20,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,17,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,12,'Alajuela' ,'luis2309',@imagenProducto,0
@@ -159,20 +159,27 @@ EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,12,'A
 
 
 --Johnnie Walker
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\johnnieWBL.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,50,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,60,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,30,'Alajuela' ,'luis2309',@imagenProducto,0
 
 --Smirnoff Vodka
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\smirnoffV.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\smirnoffV.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,50,'Cartago' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,60,'Limón' ,'luis2309',@imagenProducto,0
 EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,200,'Alajuela' ,'luis2309',@imagenProducto,0
 
 
-
-
+/*
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\smirnoffV.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg'
+*/
 
 
 
@@ -365,4 +372,4 @@ DBCC CHECKIDENT(Food,RESEED,0)
 DELETE FROM Errors
 DBCC CHECKIDENT(Errors,RESEED,0)
 
-*
+*/

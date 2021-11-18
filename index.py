@@ -113,6 +113,62 @@ def queryProduct():
         dbConnection.close()
         
 
+def createReportsBattery():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_subsidiaryXCountry ?'
+            cursor.execute(querySubisidiary,(0))
+            queryResult = cursor.fetchall()
+            subsidiaryList = []
+            for i in range(0,len(queryResult)):
+                subsidiaryList.append(queryResult[i][0])
+            
+            for subsidiary in subsidiaryList:
+                dbConnection = connectToDatabase(country)
+                try:
+                    with dbConnection.cursor() as cursor:
+                        queryProductXSubisidiary = 'EXEC sp_productxSubsidiary ? ,?'
+                        cursor.execute(queryProductXSubisidiary,(subsidiary,0))
+                        queryResult = cursor.fetchall()
+                        productXSubsidiaryList = []
+                        for i in range(0,len(queryResult)):
+                            productXSubsidiaryList.append(queryResult[i][0])
+                        
+                        for product in productXSubsidiaryList:
+                            
+                            dbConnection = connectToDatabase(country)
+                            try:
+                                with dbConnection.cursor() as cursor:
+                                    salesXSubsidiaryXProduct = 'EXEC sp_salesXSubsidiaryXProduct ? , ? , ?'
+                                    cursor.execute(salesXSubsidiaryXProduct,(product,subsidiary,0))
+                                    queryResult = cursor.fetchall()
+                                    salesXSubsidiaryXProductList = queryResult[0]
+                                    
+                            except Exception as e:
+                                print(e)
+                                return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+                            finally:
+                                dbConnection.close()
+                                    
+                                    
+                except Exception as e:
+                    print(e)
+                    return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+                
+                finally:
+                    dbConnection.close()
+                
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+createReportsBattery()
+            
 
 
 #Run application

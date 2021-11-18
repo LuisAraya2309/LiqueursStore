@@ -97,10 +97,10 @@ INSERT INTO dbo.Subsidiary
 
 --INSERTAR LICORES
 --Insertar producto
-DECLARE @imagenBaileys VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+DECLARE @imagenBaileys VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17000',20,30,'Cartago' ,'luis2309',@imagenBaileys,0
 
-DECLARE @imagenJD VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
+DECLARE @imagenJD VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25000',10,50,'Cartago' ,'luis2309',@imagenJD,0
 
 --INSERTAR COMBINACIONES DE COMIDA
@@ -216,4 +216,4 @@ DBCC CHECKIDENT(Food,RESEED,0)
 DELETE FROM Errors
 DBCC CHECKIDENT(Errors,RESEED,0)
 
-*
+*/
