@@ -3,6 +3,7 @@ from flask import Flask,render_template,request
 from flask.templating import render_template_string
 from requests.models import parse_url #Flask framework
 from databaseConnection import *
+from auxiliarFunctions import *
 import json ,requests, os
 import shutil
 #App creation
@@ -74,7 +75,39 @@ def validateUser():
     finally:
         dbConnection.close()
  
- 
+@app.route('/subSchedules',methods=['GET','POST'])
+def showSchedules():
+    subsidiary = request.form['subsidiary']
+    dbConnection = connectToDatabase(country)
+    optionSelect = ""
+    
+    
+    try:
+        with dbConnection.cursor() as cursor:
+            query = 'EXEC sp_ViewSchedule ? , ?'
+            cursor.execute(query,(subsidiary,0))
+            queryResult = cursor.fetchall()
+            schedulesDay = []
+            for day in queryResult:
+                optionSelect = ""
+                hour = str(day[2]).split(':')
+                hour = hour[0] +":"+ hour[1]
+                optionSelect+=(hour + "am  -  ")
+                hour = str(day[3]).split(':')
+                hour = hour[0] +":"+ hour[1]
+                optionSelect+=(hour+"pm.")
+                schedulesDay.append(optionSelect)
+            return render_template('schedules.html',**locals())
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()
+
+
+
         
 @app.route('/queryProduct',methods=['GET','POST'])
 def queryProduct():
@@ -88,8 +121,8 @@ def queryProduct():
             simpleResult = queryResult[0]
             combinations = "Combinaciones sugeridas: "
             for result in queryResult:
-                combinations+=(str(result[6]) + ',')
-            combinations = combinations[:-1]+'.'
+                combinations+=(str(result[6]) + ', ')
+            combinations = combinations[:-2]+'.'
             price = int(simpleResult[1])
             agedType = str(simpleResult[2])
             years = str(simpleResult[3])
@@ -98,9 +131,21 @@ def queryProduct():
             tempFile.write(queryResult[0][5])
             tempFile.close()
             shutil.move('temp.jpg','./static/images/temp.jpg')
+            nearestSubsidiares = subsidiariesNear(username,productName,country)
+            nearestSub = nearestSubsidiares[0][1]
+            distance = int(nearestSubsidiares[0][2])
+            distance = str(distance/1000)[:-1]
+            nearestSub+=(" a solamente " + str(distance))
+            availablesSubs = "Disponible en: "
+            for result in nearestSubsidiares:
+                availablesSubs+=(str(result[0])+', ')
+            availablesSubs = availablesSubs[:-2]+'.'
+                
+            
             #destiny =   str(os.path.realpath('temp.jpg')) 
             #return str(destiny)
             #os.startfile(destiny)
+            
             return render_template('productQuery.html',**locals())
             
             
@@ -111,6 +156,29 @@ def queryProduct():
     
     finally:
         dbConnection.close()
+        
+        
+        
+@app.route('/listEmployees',methods=['GET','POST'])
+def listEmployees():
+    subsidiary = request.form['subsidiaryEmployees']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_ViewEmployeesPerSubsidiary ?,?'
+            cursor.execute(querySubisidiary,(subsidiary,0))
+            queryResult = cursor.fetchall()
+            return str(queryResult)    
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+
+
+        
         
 
 def createReportsBattery():
@@ -167,7 +235,6 @@ def createReportsBattery():
     finally:
         dbConnection.close()
         
-createReportsBattery()
             
 
 

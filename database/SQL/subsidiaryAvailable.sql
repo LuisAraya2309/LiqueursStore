@@ -27,7 +27,6 @@ BEGIN
 						NULL
 					FROM dbo.Subsidiary AS S
 				
-				SELECT * FROM @subsidiariesDistance;
 						
 				DECLARE @idx INT = (SELECT COUNT(*) FROM @subsidiariesDistance);
 				DECLARE @minorDistance FLOAT = 0.0;
@@ -56,7 +55,7 @@ BEGIN
 
 				SELECT DISTINCT
 					S.Title,
-					@nearestSubsidiary,
+					@nearestSubsidiary AS Nearest,
 					@minorDistance,
 					@OutResultCode
 				FROM dbo.Subsidiary AS S
@@ -90,13 +89,14 @@ BEGIN
 
 END
 
-
+/*
 DECLARE @x GEOGRAPHY;
-SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+SET @x = GEOGRAPHY::STGeomFromText('POINT(9.920615833464579 -84.14434214291683)',4326)
 UPDATE dbo.Customers
 	SET
 		Address = @x
-	WHERE Phone = 84105826;
+	WHERE Phone = 84950987;
 
-EXEC sp_SubsidiaryAvailable 'Baileys','luis2309',0
+EXEC sp_SubsidiaryAvailable 'Baileys','jorge87',0
 
+*/
