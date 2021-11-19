@@ -3,11 +3,19 @@ USE [CostaRicaLS]
 
 --Insertar datos
 --Insertar Tipos de Transaccion
+
+INSERT INTO dbo.TransactionType
+	VALUES
+	(
+		'Sales'
+	)
+
 INSERT INTO dbo.TransactionType
 	VALUES
 	(
 		'AddLiqueur'
 	)
+
 
 --Insertar tipos de Pagos
 INSERT INTO dbo.PaymentTypes
@@ -94,15 +102,96 @@ INSERT INTO dbo.Subsidiary
 		@cartagoDireccion
 	)
 
+DECLARE @limonDireccion GEOGRAPHY;
+SET @limonDireccion = GEOGRAPHY::STGeomFromText('POINT(9.984966886534004 -83.06093068202011)',4326)
+INSERT INTO dbo.Subsidiary
+	(
+	Title,
+	Address
+	)
+	VALUES
+	(
+		'Limón',
+		@limonDireccion
+	)
 
---INSERTAR LICORES
---Insertar producto
-DECLARE @imagenBaileys VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17000',20,30,'Cartago' ,'luis2309',@imagenBaileys,0
+DECLARE @alajuelaDireccion GEOGRAPHY;
+SET @alajuelaDireccion = GEOGRAPHY::STGeomFromText('POINT(10.016929741729518 -84.21399376233771)',4326)
+INSERT INTO dbo.Subsidiary
+	(
+	Title,
+	Address
+	)
+	VALUES
+	(
+		'Alajuela',
+		@alajuelaDireccion
+	)
 
-DECLARE @imagenJD VARBINARY(MAX) = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25000',10,50,'Cartago' ,'luis2309',@imagenJD,0
 
+
+--INSERTAR LICORES--------------------------------------------------------------------------------------------------------
+--Insertar productos en Cartago
+DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+--Baileys
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,30,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,35,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 20 años','Baileys','Escocia','17',20,42,'Alajuela' ,'luis2309',@imagenProducto,0
+
+--Jack Daniels
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,50,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,40,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 10 años','Jack Daniels Standard Edition','Estados Unidos','25',10,60,'Alajuela' ,'luis2309',@imagenProducto,0
+
+
+--Bacardi
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,120,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,102,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,140,'Alajuela' ,'luis2309',@imagenProducto,0
+
+--Cortez
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\cortez.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,200,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,150,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,50,'Alajuela' ,'luis2309',@imagenProducto,0
+
+--DonJulio
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\donJulio.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,20,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,17,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,12,'Alajuela' ,'luis2309',@imagenProducto,0
+
+
+
+--Johnnie Walker
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\johnnieWBL.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,50,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,60,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,30,'Alajuela' ,'luis2309',@imagenProducto,0
+
+--Smirnoff Vodka
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\smirnoffV.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,50,'Cartago' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,60,'Limón' ,'luis2309',@imagenProducto,0
+EXEC sp_AddNewProduct 'Aromatizado con canela','Smirnoff Vodka','Rusia','18',3,200,'Alajuela' ,'luis2309',@imagenProducto,0
+
+
+/*
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\smirnoffV.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg'
+*/
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 --INSERTAR COMBINACIONES DE COMIDA
 INSERT INTO dbo.GreatCombinations  --Baileys
 	VALUES
@@ -134,19 +223,130 @@ INSERT INTO dbo.GreatCombinations --Jack Daniels
 	)
 
 
+INSERT INTO dbo.GreatCombinations --Bacardi
+	VALUES
+	(
+	3,
+	9
+	)
+
+INSERT INTO dbo.GreatCombinations --Bacardi
+	VALUES
+	(
+	3,
+	5
+	)
+
+INSERT INTO dbo.GreatCombinations --Cortez
+	VALUES
+	(
+	4,
+	1
+	)
+
+INSERT INTO dbo.GreatCombinations --Cortez
+	VALUES
+	(
+	4,
+	8
+	)
+
+INSERT INTO dbo.GreatCombinations --Don Julio
+	VALUES
+	(
+	5,
+	3
+	)
+
+INSERT INTO dbo.GreatCombinations --Don Julio
+	VALUES
+	(
+	5,
+	4
+	)
+
+INSERT INTO dbo.GreatCombinations --Johnnie Walker
+	VALUES
+	(
+	6,
+	10
+	)
+
+INSERT INTO dbo.GreatCombinations --Johnnie Walker
+	VALUES
+	(
+	6,
+	3
+	)
+
+INSERT INTO dbo.GreatCombinations --Smirnoff
+	VALUES
+	(
+	7,
+	10
+	)
+
+INSERT INTO dbo.GreatCombinations --Smirnoff
+	VALUES
+	(
+	7,
+	2
+	)
 
 
+--Insertar transacciones
 
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	1,
+	4,
+	5,
+	1,
+	'2021-03-11',
+	0.0,
+	150
+	)
 
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	1,
+	5,
+	2,
+	1,
+	'2021-04-21',
+	0.0,
+	25
+	)
 
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	1,
+	4,
+	6,
+	1,
+	'2021-09-7',
+	0.0,
+	40
+	)
 
-
-
-
-
-
-
-
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	2,
+	5,
+	1,
+	1,
+	'2021-10-13',
+	0.0,
+	17
+	)
 
 
 
