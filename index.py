@@ -165,10 +165,14 @@ def listEmployees():
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
-            querySubisidiary = 'EXEC sp_ViewEmployeesPerSubsidiary ?,?'
+            querySubisidiary = 'EXEC sp_EmployeesPerSubsidiary ?,?'
             cursor.execute(querySubisidiary,(subsidiary,0))
             queryResult = cursor.fetchall()
-            return str(queryResult)    
+            employees = []
+            for result in queryResult:
+                employees.append(str(result[0]))
+            
+            return render_template('listEmployees.html',**locals())    
             
     except Exception as e:
         print(e)

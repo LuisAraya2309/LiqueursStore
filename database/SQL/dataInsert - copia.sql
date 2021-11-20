@@ -40,9 +40,9 @@ INSERT INTO dbo.EmployeeType
 	('Auxiliar','1500');
 
 
---Insertar empleados
-DECLARE @imagenEmpleado VARBINARY(MAX);
-DECLARE @dirrecionEmpleado GEOGRAPHY;
+
+
+
 
 
 
@@ -298,6 +298,38 @@ INSERT INTO dbo.Schedules
 		'14:00',
 		'20:00'
 	);
+--INSERTAR EMPLEADOS---------------------------------------------------------------------------------------------------
+--Insertar empleados
+DECLARE @imagenEmpleado VARBINARY(MAX);
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\laura.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Cartago','Gerente','Laura Mata Redondo','lauramr@gmail.com',38740187,32,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\andrea.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Limón','Gerente','Andrea Barahona Mata','andreabm@gmail.com',97308963,35,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\carlos.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Alajuela','Gerente','Carlos Mendez Brenes','carlosmb@gmail.com',92100982,40,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jorge.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Cartago','Cajero','Jorge Flores Araya','jorgefa@gmail.com',12730906,43,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\josue.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Limón','Cajero','Josue Carrillo Parra','josuecp@gmail.com',82937018,47,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\raul.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Alajuela','Cajero','Raul Alvarez Genis','raulag@gmail.com',48205629,23,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\rolbin.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Cartago','Auxiliar','Rolbin Bonilla Moreira','rolbinbm@gmail.com',58201927,40,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\saray.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Limón','Auxiliar','Saray Fuentes Diaz','sarayfd@gmail.com',29093567,43,@imagenEmpleado,0
+
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\raquel.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddEmployee 'Alajuela','Auxiliar','Raquel Soto Montero','raquelsm@gmail.com',48204675,28,@imagenEmpleado,0
+
+
 
 
 --INSERTAR LICORES--------------------------------------------------------------------------------------------------------
@@ -485,6 +517,22 @@ INSERT INTO dbo.GreatCombinations --Smirnoff
 
 
 --BORRAR DATOS
+/*
+--Borrar Empleados por sucursal
+DELETE FROM EmployeePerSubsidiary;
+DBCC CHECKIDENT (EmployeePerSubsidiary,RESEED,0);
+*/
+
+/*
+DELETE FROM Employees
+DBCC CHECKIDENT (Employees,RESEED,0);
+*/
+
+/*
+DELETE FROM EmployeeType
+DBCC CHECKIDENT (EmployeeType,RESEED,0);
+*/
+
 --Taxes Report
 
 

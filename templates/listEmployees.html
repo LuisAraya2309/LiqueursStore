@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre+Medium&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='./css/listEmployees.css') }}" rel="stylesheet" />
+    <title>Employees</title>
+</head>
+<body>
+    <div class="v1026_233">
+    <div class="v1026_234">
+    </div><span class="v1026_235">TB </span>
+    <span class="v1026_236">tienda bunbury.</span>
+    <div class="v1026_237"></div>
+    <div class="v1026_238"></div>
+    <span class="v1026_239">Empleados</span>
+    <span class="v1026_240">{{subsidiary}}</span>
+    <div class="v1026_241">
+    
+    <select class="v1026_242">
+        {% for employee in employees%}
+            <option>{{employee}}</option>
+        {% endfor%}
+    </select>
+    <div class="name"></div>
+    </div></div>
+    <div class="v1026_246"></div>
+    <div class="v1026_247"></div>
+    <div class="v1026_248"></div>
+    <div class="v1117_140"></div></div>
+</body>
