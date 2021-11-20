@@ -24,6 +24,12 @@ INSERT INTO dbo.PaymentTypes
 		'Add'
 	)
 
+INSERT INTO dbo.PaymentTypes
+	VALUES
+	(
+		'Cash'
+	)
+
 --Insertar tipos de Cliente
 INSERT INTO dbo.CustomerType
 	VALUES(
@@ -303,6 +309,19 @@ INSERT INTO dbo.Transactions
 	1,
 	4,
 	5,
+	2,
+	'2021-11-18',
+	0.0,
+	150
+	)
+
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	1,
+	4,
+	5,
 	1,
 	'2021-03-11',
 	0.0,
@@ -343,6 +362,32 @@ INSERT INTO dbo.Transactions
 	5,
 	1,
 	1,
+	'2021-10-13',
+	0.0,
+	17
+	)
+
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	3,
+	5,
+	1,
+	2,
+	'2021-10-13',
+	0.0,
+	17
+	)
+
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,
+	1,
+	5,
+	1,
+	2,
 	'2021-10-13',
 	0.0,
 	17

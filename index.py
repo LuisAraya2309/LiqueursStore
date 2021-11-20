@@ -239,7 +239,277 @@ def createReportsBattery():
     finally:
         dbConnection.close()
         
+
+#Battery of reports
+
+def createSalesXCountry():
+    
+    dbConnectionSalesXSubs = connectToDatabase(country)
+    try:
+        with dbConnectionSalesXSubs.cursor() as cursor:
+            querySalesXCountry = 'EXEC sp_salesXCountry ?'
+            cursor.execute(querySalesXCountry,(0))
+            queryResult = cursor.fetchall()
             
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnectionSalesXSubs.close()  
+
+def subsidiaryXCountry(): 
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_subsidiaryXCountry ?'
+            cursor.execute(querySubisidiary,(0))
+            queryResult = cursor.fetchall()
+            subsidiaryList = []
+            for i in range(0,len(queryResult)):
+                subsidiaryList.append(queryResult[i][0])
+            return subsidiaryList
+                
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()       
+        
+def createSalesXSubisidiary(idsubsidiary):
+    
+    dbConnectionSalesXSubs = connectToDatabase(country)
+    try:
+        with dbConnectionSalesXSubs.cursor() as cursor:
+            querySalesXSubisidiary = 'EXEC sp_salesXSubsidiary ? ,?'
+            cursor.execute(querySalesXSubisidiary,(idsubsidiary,0))
+            queryResult = cursor.fetchall()
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnectionSalesXSubs.close()               
+
+def productsXSubsidiary(idsubsidiary):
+    dbConnection1 = connectToDatabase(country)
+    try:
+        with dbConnection1.cursor() as cursor:
+            queryProductXSubisidiary = 'EXEC sp_productxSubsidiary ? ,?'
+            cursor.execute(queryProductXSubisidiary,(idsubsidiary,0))
+            queryResult = cursor.fetchall()
+            productXSubsidiaryList = []
+            for i in range(0,len(queryResult)):
+                productXSubsidiaryList.append(queryResult[i][0]) 
+            return productXSubsidiaryList 
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        
+    finally:
+        dbConnection1.close()
+
+def createSaleXSubsidiaryXProduct(idProduct, idSubsidiary):
+    
+    dbConnection2 = connectToDatabase(country)
+    try:
+        with dbConnection2.cursor() as cursor:
+            salesXSubsidiaryXProduct = 'EXEC sp_salesXSubsidiaryXProduct ? , ? , ?'
+            cursor.execute(salesXSubsidiaryXProduct,(idProduct,idSubsidiary,0))
+            queryResult = cursor.fetchall()
+            salesXSubsidiaryXProductList = queryResult                              
+            if salesXSubsidiaryXProductList :
+                #Create the report baterry
+                #print(salesXSubsidiaryXProductList)
+                print()
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection2.close()   
+
+def getDate(subsidiary):
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            queryGetDates = 'EXEC sp_getDates ? , ?'
+            cursor.execute(queryGetDates,(subsidiary,0))
+            queryResult = cursor.fetchall()
+            dateList = []
+            for i in range(0,len(queryResult)):
+                dateList.append(queryResult[i][0])
+            return list(set(dateList))
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()   
+
+def createSalesXDate(date, subsidiary):
+    
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            salesXDate = 'EXEC sp_salesXDate ?, ? , ?'
+            cursor.execute(salesXDate,(subsidiary, date,0))
+            queryResult = cursor.fetchall()
+            salesXDateList = queryResult                              
+            if salesXDateList :
+                #Create the report baterry
+                print()
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()  
+
+def getPaymentType():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            queryGetDates = 'EXEC sp_getPaymentType ?'
+            cursor.execute(queryGetDates,(0))
+            queryResult = cursor.fetchall()
+            paymentTypeList = []
+            for i in range(0,len(queryResult)):
+                paymentTypeList.append(queryResult[i][0])
+            return paymentTypeList
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close() 
+
+def createSalesXDateXPaymentType(date, paymentType, subsidiary):
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            salesXDateXPaymentType = 'EXEC sp_salesXDateXPaymentType ? ,? , ? , ?'
+            cursor.execute(salesXDateXPaymentType,(subsidiary, date, paymentType,0))
+            queryResult = cursor.fetchall()
+            salesXDateXPaymentTypeList = queryResult                              
+            if salesXDateXPaymentTypeList :
+                #Create the report baterry
+                print()
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()  
+
+def createSalesXPaymentType(paymentType, subsidiary):
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            salesXPaymentType = 'EXEC sp_salesXPaymentType ? ,? , ?'
+            cursor.execute(salesXPaymentType,(subsidiary ,paymentType,0))
+            queryResult = cursor.fetchall()
+            salesXPaymentTypeList = queryResult                              
+            if salesXPaymentTypeList :
+                #Create the report baterry
+                print()
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()         
+
+def mainBatteryReport():
+    
+    createSalesXCountry()
+    subsidiaryList = subsidiaryXCountry()        
+    for subsidiary in range(0,len(subsidiaryList)):
+        #print(subsidiaryList[subsidiary])
+        #print()
+        
+        createSalesXSubisidiary(subsidiary+1) #This function creates the sales per subsidiary report
+        productXSubsidiaryList = productsXSubsidiary(subsidiary+1)  
+        
+        for product in range(0,len(productXSubsidiaryList)):
+            createSaleXSubsidiaryXProduct(product+1,subsidiary+1)
+            
+#mainBatteryReport()     
+
+def saleXSubsidiaryXDateXPaymentType():
+    
+    subsidiaryList = subsidiaryXCountry()        
+    for subsidiary in subsidiaryList:
+        newSubsidiary = True
+        tranDateList = getDate(subsidiary)
+        for date in tranDateList:
+            
+            createSalesXDate(date, subsidiary)
+            paymentTypeList = getPaymentType()
+            
+            for type in range(0,len(paymentTypeList)):
+                if newSubsidiary :
+                    createSalesXPaymentType(type+1, subsidiary)
+                createSalesXDateXPaymentType(date,type+1, subsidiary)
+            newSubsidiary = False
+        
+#saleXSubsidiaryXDateXPaymentType()
+
+def bestSellerXCountry():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            bestSellerProduct = 'EXEC sp_titleProductTransaction  ?'
+            cursor.execute(bestSellerProduct,(0))
+            queryResult = cursor.fetchall()
+            
+            productDict = {}
+            for item in  range(0,len(queryResult)):
+                if queryResult[item][0] not in productDict.keys():
+                    productDict[queryResult[item][0]] = 1
+                else:
+                    productDict[queryResult[item][0]] += 1
+            productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
+            print(productDict)
+                   
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()  
+          
+#bestSellerXCountry()
+
+def bestSellerXSubsidiary():
+    subsidiaryList = subsidiaryXCountry()        
+    for subsidiary in subsidiaryList:
+        dbConnection = connectToDatabase(country)
+        try:
+            with dbConnection.cursor() as cursor:
+                bestSellerProduct = 'EXEC sp_titleProductTransactionXSubsidiary ? ,  ?'
+                cursor.execute(bestSellerProduct,(subsidiary,0))
+                queryResult = cursor.fetchall()
+                
+                productDict = {}
+                for item in  range(0,len(queryResult)):
+                    if queryResult[item][0] not in productDict.keys():
+                        productDict[queryResult[item][0]] = 1
+                    else:
+                        productDict[queryResult[item][0]] += 1
+                productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
+                print(productDict)
+                    
+        except Exception as e:
+            print(e)
+            return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        finally:
+            dbConnection.close()    
+
+#bestSellerXSubsidiary()
 
 
 #Run application
