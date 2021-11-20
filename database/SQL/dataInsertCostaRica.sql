@@ -2,33 +2,52 @@
 USE [CostaRicaLS]
 
 --Insertar datos
---Insertar Tipos de Transaccion
+--Insertar Tipos de Transaccion  #################################
+
+INSERT INTO dbo.TransactionType
+	VALUES
+	(
+		'Sales'
+	)
+
 INSERT INTO dbo.TransactionType
 	VALUES
 	(
 		'AddLiqueur'
 	)
 
---Insertar tipos de Pagos
+--Insertar tipos de Pagos     ####################################
 INSERT INTO dbo.PaymentTypes
 	VALUES
 	(
 		'Add'
 	)
 
---Insertar tipos de Cliente
+INSERT INTO dbo.PaymentTypes
+	VALUES
+	(
+		'Credit Card'
+	)
+
+INSERT INTO dbo.PaymentTypes
+	VALUES
+	(
+		'Cash'
+	)
+
+--Insertar tipos de Cliente   ####################################
 INSERT INTO dbo.CustomerType
 	VALUES(
 	'Normal'
 	)
 
-INSERT INTO dbo.CustomerType
+INSERT INTO dbo.CustomerType  
 	VALUES(
 	'VIP'
 	)
 
 
---Insertar tipos de Empleado
+--Insertar tipos de Empleado 
 
 INSERT INTO dbo.EmployeeType
 	VALUES(
@@ -91,14 +110,24 @@ INSERT INTO dbo.Food
 --INSERTAR USUARIOS
 --Crear direcciones para los usuarios
 DECLARE @x GEOGRAPHY;
-SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
 
-EXEC sp_SignUp 'Luis Carlos Araya Mata','luistec2309@gmail.com',84105826,NULL,19,'luis2309','admin123','Administrator',0;
-EXEC sp_SignUp 'Josue Gutierrez Piedra','josuegupi2309@gmail.com',87430908,NULL,20,'gupi08','flor420','Biller',0;
-EXEC sp_SignUp 'Sebastian Diaz Obando','sebasDiaz@gmail.com',96397630,NULL,25,'sebas63','kmy45','Biller',0;
-EXEC sp_SignUp 'Rolbin Mendez Brenes','rolbismb@gmail.com',49584109,NULL,30,'rolbis09','amoskz','Consultant',0;
-EXEC sp_SignUp 'Jorge Bonilla Moreira','jorgeb@gmail.com',84950987,NULL,45,'jorge87','labias123','Consultant',0;
-EXEC sp_SignUp 'Robert Araya Carrillo','roberta@gmail.com',23098495,NULL,60,'roberta95','explotar','Administrator',0;
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+EXEC sp_SignUp 'Luis Carlos Araya Mata','luistec2309@gmail.com',84105826,@x,19,'luis2309','admin123','Administrator',0;
+
+SET @x = GEOGRAPHY::STGeomFromText('POINT(9.90462237731634 -83.68280935931553)',4326)
+EXEC sp_SignUp 'Josue Gutierrez Piedra','josuegupi2309@gmail.com',87430908,@x,20,'gupi08','flor420','Biller',0;
+
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+EXEC sp_SignUp 'Sebastian Diaz Obando','sebasDiaz@gmail.com',96397630,@x,25,'sebas63','kmy45','Biller',0;
+
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+EXEC sp_SignUp 'Rolbin Mendez Brenes','rolbismb@gmail.com',49584109,@x,30,'rolbis09','amoskz','Consultant',0;
+
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+EXEC sp_SignUp 'Jorge Bonilla Moreira','jorgeb@gmail.com',84950987,@x,45,'jorge87','labias123','Consultant',0;
+
+SET @x = GEOGRAPHY::STGeomFromText('POINT(10.007443708576737 -84.21213808239264)',4326)
+EXEC sp_SignUp 'Robert Araya Carrillo','roberta@gmail.com',23098495,@x,60,'roberta95','explotar','Administrator',0;
 
 
 --INSERTAR Subsidiarias
@@ -498,7 +527,21 @@ INSERT INTO dbo.GreatCombinations --Smirnoff
 
 
 
-
+--Insertar transacciones
+/*
+INSERT INTO dbo.Transactions
+	VALUES
+	(
+	1,    Transaction Type   1 = Sale
+	1,    IdSubsidiary
+	4,    IdUser que lo compro
+	5,	  IdLicor
+	1,    2 = Credit Card, 3 Cash
+	'2021-03-11',   Transaction Date
+	0.0,            Discount
+	150				Total Price
+	)
+*/
 
 
 
