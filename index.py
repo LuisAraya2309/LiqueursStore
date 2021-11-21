@@ -21,11 +21,6 @@ resp = requests.get(newRequest)
 p = resp.json()
 '''
 
-
-
-
-
-
 #Routes
 @app.route('/',methods=['GET'])   #Login page
 def login():

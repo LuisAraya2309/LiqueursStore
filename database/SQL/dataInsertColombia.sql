@@ -1,5 +1,5 @@
 
-USE [CostaRicaLS]
+USE ColombiaLS
 
 --Insertar datos
 --Insertar Tipos de Transaccion  #################################
