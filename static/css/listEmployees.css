@@ -101,7 +101,7 @@ body {
 }
 .v1026_241 {
   width: 480px;
-  height: 70px;
+  height: 100%;
   background: url("../images/v1026_241.png");
   background-repeat: no-repeat;
   background-position: center center;
@@ -130,6 +130,21 @@ body {
   font-size: 30px;
   color: #fff;
   text-align: center;
+}
+
+.v5000{
+    width: 264px;
+    background-color: #fff;
+    color: rgba(22,20,18,1);
+    position: absolute;
+    top: 200px;
+    left: 120px;
+    font-family: Abel;
+    font-weight: Regular;
+    font-size: 64px;
+    opacity: 1;
+    text-align: left;
+    border: none;
 }
 .v1026_243 {
   width: 437px;

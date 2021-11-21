@@ -16,6 +16,13 @@ INSERT INTO dbo.TransactionType
 		'AddLiqueur'
 	)
 
+INSERT INTO dbo.TransactionType
+	VALUES
+	(
+		'Buy'
+	)
+
+
 --Insertar tipos de Pagos     ####################################
 INSERT INTO dbo.PaymentTypes
 	VALUES
@@ -57,11 +64,6 @@ INSERT INTO dbo.EmployeeType
 	('Miscelaneo','2000'),
 	('Gerente','3100'),
 	('Auxiliar','1600');
-
-
-
-
-
 
 
 
