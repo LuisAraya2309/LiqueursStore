@@ -34,7 +34,11 @@
                     <div class="name"></div>
                 </div>
                 <div class="v1032_272">
-                    <button class = "v1032_274">Agregar al carrito</button >
+                    <form method = "post" action="/startShopping">
+                        <input type ="hidden" id="productName" name="productName" value="{{ productName }}" />
+                        <button class = "v1032_274">Comprar Producto</button >
+                    </form>
+                    
                 </div>
                 <span class="v1032_281">Se aplicarán impuestos y tarifas de envío al finalizar la compra.</span>
             </div>

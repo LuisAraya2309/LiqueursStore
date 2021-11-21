@@ -1,6 +1,6 @@
 import pyodbc  #Driver for Python and SQL Server
 def connectToDatabase(country):
-    databases = {'Costa Rica':'CostaRicaLS','Colombia':1,'Argentina':2}
+    databases = {'Costa Rica':'CostaRicaLS','Argentina':'ArgentinaLS','Colombia':'ColombiaLS'}
     serverDirection = '127.0.0.1'
     databaseName = databases[country]
     userName = 'sa'

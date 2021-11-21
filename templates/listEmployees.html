@@ -16,12 +16,16 @@
     <span class="v1026_239">Empleados</span>
     <span class="v1026_240">{{subsidiary}}</span>
     <div class="v1026_241">
+    <form action="/showEmployee" method="post">
+        <select class="v1026_242" name="employeeSelected">
+            {% for employee in employees%}
+                <option>{{employee}}</option>
+            {% endfor%}
+        </select>
+        <input class="v5000" type="submit" value="Consultar"></input>
+    </form>
     
-    <select class="v1026_242">
-        {% for employee in employees%}
-            <option>{{employee}}</option>
-        {% endfor%}
-    </select>
+
     <div class="name"></div>
     </div></div>
     <div class="v1026_246"></div>

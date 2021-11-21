@@ -4,7 +4,7 @@ from flask.templating import render_template_string
 from requests.models import parse_url #Flask framework
 from databaseConnection import *
 from auxiliarFunctions import *
-import json ,requests, os
+import json ,requests, os,random
 import shutil
 #App creation
 app = Flask(__name__)
@@ -14,7 +14,7 @@ app = Flask(__name__)
 username =""
 api = "http://localhost:3001/"
 imageSrc = ""
-country="Costa Rica"
+country="Argentina"
 '''
 newRequest = api+'users'
 resp = requests.get(newRequest)
@@ -175,8 +175,159 @@ def listEmployees():
 
     finally:
         dbConnection.close()
+        
+        
+@app.route('/showEmployee',methods=['GET','POST'])
+def showEmployee():
+    employeeSelected = request.form['employeeSelected']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_ViewEmployee ?,?'
+            cursor.execute(querySubisidiary,(employeeSelected,0))
+            queryResult = cursor.fetchall()
+            result = queryResult[0]
+            employeeName = result[2]
+            email = result[3]
+            phone = result[4]
+            age = result[5]
+            salary = str(result[-1]).split('.')[0] 
+            job = result[-2]
+            tempFile = open('tempE.jpg','wb')
+            tempFile.write(result[6])
+            tempFile.close()
+            shutil.move('tempE.jpg','./static/images/tempE.jpg')
+            
+            
+            
+            return render_template('viewEmployee.html',**locals())    
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+    
+       
 
 
+
+@app.route('/startShopping',methods=['GET','POST'])
+def startShopping():
+    productName = request.form['productName']
+    userName = username
+    Country = country
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+    
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT E.Title FROM dbo.Employees AS E WHERE E.IdEmployeeType = 1'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            billers = []
+            for biller in queryResult:
+                billers.append(biller[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+        
+    #Get price
+    dbConnection = connectToDatabase(country)
+    price =""
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT L.Price FROM dbo.Liqueurs AS L WHERE L.Title = ?'
+            cursor.execute(querySubisidiary,(productName))
+            queryResult = cursor.fetchall()
+            price = str(int(queryResult[0][0]))
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    #Get discount
+    dbConnection = connectToDatabase(country)
+    discount =""
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_CustomerDiscount ?, ?'
+            cursor.execute(querySubisidiary,(username,0))
+            queryResult = cursor.fetchall()
+            hasDiscount =queryResult[0][0]
+            finalDiscount =  (int(price)*0.10)
+            discount = str(finalDiscount)  if hasDiscount == 'True' else "0.0"
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    return render_template('invoice.html',**locals())
+
+
+@app.route('/buyProduct',methods=['GET','POST'])
+def buyProduct():
+    subsidiary = request.form['subsidiary']
+    userName = request.form['userName']
+    price = request.form['price'][1:]
+    discount = request.form['discount'][1:]
+    biller = request.form['biller']
+    address=request.form['address']
+    Country = request.form['Country']
+    productName = request.form['productName']
+    paymentType = request.form['paymentType']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_buyProduct ?, ?, ?, ?, ?, ?, ?, ?, ?'
+            cursor.execute(querySubisidiary,(subsidiary,userName,price, discount, biller,address,productName,paymentType,0))
+
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    return str("Compra realizada")
+    
+    '''
+    @inSubsidiary VARCHAR(50),
+	@inUsername VARCHAR(50),
+	@inPrice MONEY,
+	@inDiscount MONEY,
+	@inBiller VARCHAR(50),
+	@inAddress VARCHAR(50),
+	@inProductName VARCHAR(50),
+	@inPaymentType VARCHAR(50),
+	@OutResultCode INT OUTPUT
+    '''
         
         
 

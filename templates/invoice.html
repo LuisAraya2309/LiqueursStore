@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre+Medium&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/invoice.css') }}" rel="stylesheet" />
+    <title>Facturar</title>
+</head>
+    <body>
+        <div class="v1020_118">
+        <div class="v1020_119">
+        </div>
+        <span class="v1020_120">TB </span>
+        <span class="v1020_121">tienda bunbury.</span>
+        <div class="v1020_122"></div>
+        <div class="v1020_123"></div>
+        <span class="v1020_124">Sistema de facturación</span>
+        <span class="v1060_176">Sucursal</span>
+        <span class="v1129_146">Cliente</span>
+        <span class="v1129_152">Cliente</span>
+        <span class="v1129_153">Precio </span>
+        <span class="v1129_141">Facturador</span>
+        <span class="v1129_148">Dirección envío</span>
+        <span class="v1129_155">Descuento</span>
+        <span class="v1129_139">País</span>
+        <span class="v1129_143">Producto</span>
+        <span class="v1129_144">Producto</span>
+        <span class="v1129_150">Tipo de pago</span>
+        <form action="/buyProduct" method="post" >
+            <select type="text" class="v1060_177" required name="subsidiary">
+                {% for subsidiary in subsidiaries%}
+                    <option>{{subsidiary}}</option>
+                {% endfor%}
+            </select>
+            <input type = "text" class="v1129_147" readonly="true" value="{{userName}}"  name="userName"></input>
+            <input class="v1129_154" type = "text" readonly="true" value="${{price}}" name="price"></input>
+            <input class="v1129_156" type = "text" readonly="true" value="${{discount}}" name="discount"></input>
+            <select class="v1129_142" name="biller">
+                {% for biller in billers%}
+                    <option>{{biller}}</option>
+                {% endfor%}
+            </select>
+            <select class="v1129_149" name="address">
+                <option>Ninguna</option>
+                <option>Casa</option>
+            </select>
+
+            <input class="v1129_140" type = "text" readonly="true" value="{{Country}}" name="Country"></input>
+            <input class="v1129_145" type = "text" readonly="true" value="{{productName}}" name="productName"></input>
+            <select class="v1129_151" name="paymentType">
+                <option>Efectivo</option>
+                <option>Tarjeta de crédito</option>
+            </select>
+
+            <div class="v1129_166"/>
+                <input type ="submit" class="v1129_167" value="FACTURAR"/>
+            </div>
+        </form>
+        <div class="v1026_253"></div>
+        <div class="v1026_254"></div>
+        <div class="v1026_255"></div>
+        <span class="v1129_159">Nota: El precio del envío corresponde a $0.5 por kilómetro de distancia.</span>
+        <div class="v1129_161"></div>
+        <div class="v1129_165"></div>
+        
+        
+        </div>
+        </div>
+        </div>
+    </body>
+</html>
