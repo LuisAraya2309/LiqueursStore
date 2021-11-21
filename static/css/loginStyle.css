@@ -90,6 +90,24 @@ body {
   text-align: left;
   z-index: 21;
 }
+
+.etiqueta {
+  width: 102px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 530px;
+  left: 941px;
+  font-family: Inter;
+  font-weight: Semi Bold;
+  font-size: 18px;
+  opacity: 1;
+  text-align: left;
+  z-index: 21;
+}
+
+
+
+
 .v795_85 {
   width: 230px;
   color: rgba(0,0,0,1);
@@ -120,7 +138,7 @@ body {
   width: 247px;
   color: rgba(152,152,158,1);
   position: absolute;
-  top: 629px;
+  top: 700px;
   left: 941px;
   font-family: Inter;
   font-weight: Semi Bold;
@@ -133,7 +151,7 @@ body {
   width: 124px;
   color: rgba(0,0,0,1);
   position: absolute;
-  top: 627px;
+  top: 700px;
   left: 1196px;
   font-family: Inter;
   font-weight: Semi Bold;
@@ -154,48 +172,7 @@ body {
   opacity: 1;
   text-align: left;
 }
-.v796_91 {
-  width: 42px;
-  height: 41px;
-  background: url("../images/instagram.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 675px;
-  left: 941px;
-  overflow: hidden;
-  z-index: 21;
-}
-.v796_93 {
-  width: 46px;
-  height: 54px;
-  background: url("../images/facebook.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 666px;
-  left: 992px;
-  overflow: hidden;
-  z-index: 21;
-}
-.v796_95 {
-  width: 34px;
-  height: 41px;
-  background: url("../images/twitter.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 675px;
-  left: 1048px;
-  overflow: hidden;
-  z-index: 21;
-}
+
 
 .v794_85  {
   width: 186px;
@@ -274,13 +251,33 @@ body {
   z-index: 21;
 }
 
+.selectPais{
+  font-family: Inter;
+  font-weight: Semi Bold;
+  font-size: 16px;
+  width: 384px;
+  height: 52px;
+  background: rgba(216,216,216,1);
+  opacity: 1;
+  position: absolute;
+  top: 550px;
+  left: 934px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: hidden;
+  z-index: 21;
+}
+
+
 .inputInicioSesion {
   width: 384px;
   height: 59px;
   background: rgba(48,131,254,1);
   opacity: 1;
   position: absolute;
-  top: 560px;
+  top: 625px;
   left: 941px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
