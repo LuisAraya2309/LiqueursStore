@@ -6,6 +6,8 @@ from databaseConnection import *
 from auxiliarFunctions import *
 import json ,requests, os,random
 import shutil
+from docx import Document
+import os
 #App creation
 app = Flask(__name__)
 
@@ -445,69 +447,143 @@ def editPrice():
     finally:
         dbConnection.close()  
     
+@app.route('/returnAddProduct',methods=['GET','POST'])
+def returnAddNewProduct():
+    return render_template('addProduct.html')
     
+  
+@app.route('/addProduct',methods=['GET','POST'])
+def addNewProduct():
     
-    
-    
+    #Insert data
+    title = request.form['Nombre']
+    subsidiary = request.form['Subsidiaria']
+    price = request.form['Precio']
+    years = request.form['Años']
+    origin = request.form['Origen']
+    agedType = request.form['Añejado']
+    amount = request.form['Cantidad']
+    photo = request.files['Foto']
 
+    if photo.filename: 
         
-
-def createReportsBattery():
+        fn = os.path.basename(photo.filename) 
+        open(fn, 'wb').write(photo.file.read())
+        
+    
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
-            querySubisidiary = 'EXEC sp_subsidiaryXCountry ?'
-            cursor.execute(querySubisidiary,(0))
+            query = 'EXEC sp_AddNewProduct ? , ? , ? ,? , ? , ?, ? , ? , ?, ?'
+            cursor.execute(query,(agedType,title,origin,price,years,amount,subsidiary,username,photo.file.read(),0))
             queryResult = cursor.fetchall()
-            subsidiaryList = []
-            for i in range(0,len(queryResult)):
-                subsidiaryList.append(queryResult[i][0])
-            
-            for subsidiary in subsidiaryList:
-                dbConnection = connectToDatabase(country)
-                try:
-                    with dbConnection.cursor() as cursor:
-                        queryProductXSubisidiary = 'EXEC sp_productxSubsidiary ? ,?'
-                        cursor.execute(queryProductXSubisidiary,(subsidiary,0))
-                        queryResult = cursor.fetchall()
-                        productXSubsidiaryList = []
-                        for i in range(0,len(queryResult)):
-                            productXSubsidiaryList.append(queryResult[i][0])
-                        
-                        for product in productXSubsidiaryList:
-                            
-                            dbConnection = connectToDatabase(country)
-                            try:
-                                with dbConnection.cursor() as cursor:
-                                    salesXSubsidiaryXProduct = 'EXEC sp_salesXSubsidiaryXProduct ? , ? , ?'
-                                    cursor.execute(salesXSubsidiaryXProduct,(product,subsidiary,0))
-                                    queryResult = cursor.fetchall()
-                                    salesXSubsidiaryXProductList = queryResult[0]
-                                    
-                            except Exception as e:
-                                print(e)
-                                return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
-                            finally:
-                                dbConnection.close()
-                                    
-                                    
-                except Exception as e:
-                    print(e)
-                    return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
-                
-                finally:
-                    dbConnection.close()
-                
-            
+            outResultCode = queryResult[0][0]
+
+            if outResultCode != 1:
+                return render_template('addProduct.html')+ '''<div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">El producto fue ingresado con exito.
+                                    <a href="/beginSignUp">Registrarse</a></div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/";
+                                        });
+                            </script>
+                            '''
+            else:
+                return render_template('addProduct.html') + '''<div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">Error al insertar el producto. Vuelva a intentarlo.
+                                    <a href="/beginSignUp">Registrarse</a></div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/";
+                                        });
+                            </script>
+                            '''
+
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
-
+    
     finally:
         dbConnection.close()
-        
 
-#Battery of reports
+  
+ 
+
+def saleXCountryDoc(listTransaction):
+    document = Document()
+    document.add_heading(country + ' registró ' + str(len(listTransaction)) + ' venta(s)', 0)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Sucursal: "+str(transaction[0]) + ", Fecha: "+ str(transaction[1]) + " , Cliente: " + str(transaction[2]) + " , Producto: " + str(transaction[3]), style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[4])+ " , Descuento: " + str(transaction[5])+" , Precio final: " + str(transaction[6]))
+        
+    document.save('Reporte de ventas.docx')
+
+def saleXSubsidiaryDoc(listTransaction, subsidiary):
+
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading("La sucursal " + subsidiary + ' registró ' + str(len(listTransaction)) + ' venta(s)', level=1)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Fecha: "+ str(transaction[0]) + " , Cliente: " + str(transaction[1]) + " , Producto: " + str(transaction[2]), style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[3])+ " , Descuento: " + str(transaction[4])+" , Precio final: " + str(transaction[5]))
+        
+    document.save('Reporte de ventas.docx')
+       
+def saleXSubsidiaryXProductsDoc(listTransaction, productTitle):
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading(str(len(listTransaction)) + ' venta(s) del licor '+ productTitle, level=1)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Fecha: "+ str(transaction[0]) + " , Cliente: " + str(transaction[1]),  style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[2])+ " , Descuento: " + str(transaction[3])+" , Precio final: " + str(transaction[4]))
+        
+    document.save('Reporte de ventas.docx')      
+
+def saleXDateDoc(date, subsidiaryTitle, listTransaction):
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading(subsidiaryTitle + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(date) , level=1)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Cliente: " + str(transaction[2]) + " , Producto: " + str(transaction[3]),  style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[4])+ " , Descuento: " + str(transaction[5])+" , Precio final: " + str(transaction[6]))
+        
+    document.save('Reporte de ventas.docx')    
+
+def saleXPaymentTypeDoc(listTransaction):
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) por medio de '+ str(listTransaction[0][4]), level=1)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Sucursal: "+str(transaction[0]) + ", Fecha: "+ str(transaction[1]) + " , Cliente: " + str(transaction[2]) + " , Producto: " + str(transaction[3]), style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[4])+ " , Descuento: " + str(transaction[5])+" , Precio final: " + str(transaction[6]))
+        
+    document.save('Reporte de ventas.docx')   
+
+def saleXDatexPaymentTypeDoc(listTransaction):
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(listTransaction[0][1]) +' por medio de '+ str(listTransaction[0][4]), level=1)
+    for transaction in listTransaction:
+        document.add_paragraph("")
+        p = document.add_paragraph("Sucursal: "+str(transaction[0]) + ", Fecha: "+ str(transaction[1]) + " , Cliente: " + str(transaction[2]) + " , Producto: " + str(transaction[3]), style = 'List Bullet')
+        p.add_run(", Tipo de pago: "+ str(transaction[4])+ " , Descuento: " + str(transaction[5])+" , Precio final: " + str(transaction[6]))
+        
+    document.save('Reporte de ventas.docx')   
 
 def createSalesXCountry():
     
@@ -517,7 +593,7 @@ def createSalesXCountry():
             querySalesXCountry = 'EXEC sp_salesXCountry ?'
             cursor.execute(querySalesXCountry,(0))
             queryResult = cursor.fetchall()
-            
+            saleXCountryDoc(queryResult)
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
@@ -544,7 +620,7 @@ def subsidiaryXCountry():
     finally:
         dbConnection.close()       
         
-def createSalesXSubisidiary(idsubsidiary):
+def createSalesXSubisidiary(idsubsidiary, titleSubsidiary):
     
     dbConnectionSalesXSubs = connectToDatabase(country)
     try:
@@ -552,7 +628,7 @@ def createSalesXSubisidiary(idsubsidiary):
             querySalesXSubisidiary = 'EXEC sp_salesXSubsidiary ? ,?'
             cursor.execute(querySalesXSubisidiary,(idsubsidiary,0))
             queryResult = cursor.fetchall()
-            
+            saleXSubsidiaryDoc(queryResult, titleSubsidiary)
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
@@ -578,7 +654,7 @@ def productsXSubsidiary(idsubsidiary):
     finally:
         dbConnection1.close()
 
-def createSaleXSubsidiaryXProduct(idProduct, idSubsidiary):
+def createSaleXSubsidiaryXProduct(idProduct, idSubsidiary, productTitle):
     
     dbConnection2 = connectToDatabase(country)
     try:
@@ -588,9 +664,7 @@ def createSaleXSubsidiaryXProduct(idProduct, idSubsidiary):
             queryResult = cursor.fetchall()
             salesXSubsidiaryXProductList = queryResult                              
             if salesXSubsidiaryXProductList :
-                #Create the report baterry
-                #print(salesXSubsidiaryXProductList)
-                print()
+                saleXSubsidiaryXProductsDoc(salesXSubsidiaryXProductList, productTitle)
             
     except Exception as e:
         print(e)
@@ -627,8 +701,7 @@ def createSalesXDate(date, subsidiary):
             queryResult = cursor.fetchall()
             salesXDateList = queryResult                              
             if salesXDateList :
-                #Create the report baterry
-                print()
+                saleXDateDoc(date, subsidiary, salesXDateList)
             
     except Exception as e:
         print(e)
@@ -664,8 +737,7 @@ def createSalesXDateXPaymentType(date, paymentType, subsidiary):
             queryResult = cursor.fetchall()
             salesXDateXPaymentTypeList = queryResult                              
             if salesXDateXPaymentTypeList :
-                #Create the report baterry
-                print()
+                saleXDatexPaymentTypeDoc(salesXDateXPaymentTypeList)
             
     except Exception as e:
         print(e)
@@ -682,9 +754,7 @@ def createSalesXPaymentType(paymentType, subsidiary):
             queryResult = cursor.fetchall()
             salesXPaymentTypeList = queryResult                              
             if salesXPaymentTypeList :
-                #Create the report baterry
-                print()
-            
+                saleXPaymentTypeDoc(salesXPaymentTypeList)
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
@@ -694,42 +764,57 @@ def createSalesXPaymentType(paymentType, subsidiary):
 def mainBatteryReport():
     
     createSalesXCountry()
+    
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_heading('Ventas por subsidiaria', 0)
+    
     subsidiaryList = subsidiaryXCountry()        
     for subsidiary in range(0,len(subsidiaryList)):
         #print(subsidiaryList[subsidiary])
         #print()
         
-        createSalesXSubisidiary(subsidiary+1) #This function creates the sales per subsidiary report
+        createSalesXSubisidiary(subsidiary+1 , subsidiaryList[subsidiary] ) #This function creates the sales per subsidiary report
         productXSubsidiaryList = productsXSubsidiary(subsidiary+1)  
-        
+        document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+        document.add_heading('Ventas por subsidiaria por producto', 0)
         for product in range(0,len(productXSubsidiaryList)):
-            createSaleXSubsidiaryXProduct(product+1,subsidiary+1)
+            createSaleXSubsidiaryXProduct(product+1,subsidiary+1 ,productXSubsidiaryList[product])
             
-#mainBatteryReport()     
+mainBatteryReport()     
 
 def saleXSubsidiaryXDateXPaymentType():
     
+    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document.add_paragraph("")
+    document.add_heading('Ventas por fecha y/o tipo de pago', 0)
+    document.save('Reporte de ventas.docx')
+    
     subsidiaryList = subsidiaryXCountry()        
     for subsidiary in subsidiaryList:
-        newSubsidiary = True
         tranDateList = getDate(subsidiary)
+        newSubsidiary = True
         for date in tranDateList:
-            
-            createSalesXDate(date, subsidiary)
             paymentTypeList = getPaymentType()
             
-            for type in range(0,len(paymentTypeList)):
-                if newSubsidiary :
-                    createSalesXPaymentType(type+1, subsidiary)
+            if newSubsidiary:      
+                createSalesXPaymentType(1, subsidiary)
+                createSalesXPaymentType(2, subsidiary)
+                newSubsidiary = False
+                
+            createSalesXDate(date, subsidiary)
+            for type in range(0,len(paymentTypeList)):    
                 createSalesXDateXPaymentType(date,type+1, subsidiary)
-            newSubsidiary = False
-        
-#saleXSubsidiaryXDateXPaymentType()
+                     
+saleXSubsidiaryXDateXPaymentType()
 
 def bestSellerXCountry():
+
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
+            document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+            document.add_paragraph("")
+            document.add_heading('Productos más/menos comprados', 0)
             bestSellerProduct = 'EXEC sp_titleProductTransaction  ?'
             cursor.execute(bestSellerProduct,(0))
             queryResult = cursor.fetchall()
@@ -741,7 +826,23 @@ def bestSellerXCountry():
                 else:
                     productDict[queryResult[item][0]] += 1
             productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
-            print(productDict)
+            
+            
+            document.add_heading('Los productos más vendidos en ' + country + ' son: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(productDict[0][0])
+            document.add_paragraph(productDict[1][0])
+            document.add_paragraph(productDict[2][0])
+            
+            document.add_heading('Los productos menos vendidos en ' + country + ' son: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(productDict[-1][0])
+            document.add_paragraph(productDict[-2][0])
+            document.add_paragraph(productDict[-3][0])
+            
+            document.save('Reporte de ventas.docx')
                    
     except Exception as e:
         print(e)
@@ -749,7 +850,7 @@ def bestSellerXCountry():
     finally:
         dbConnection.close()  
           
-#bestSellerXCountry()
+bestSellerXCountry()
 
 def bestSellerXSubsidiary():
     subsidiaryList = subsidiaryXCountry()        
@@ -757,6 +858,7 @@ def bestSellerXSubsidiary():
         dbConnection = connectToDatabase(country)
         try:
             with dbConnection.cursor() as cursor:
+                document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
                 bestSellerProduct = 'EXEC sp_titleProductTransactionXSubsidiary ? ,  ?'
                 cursor.execute(bestSellerProduct,(subsidiary,0))
                 queryResult = cursor.fetchall()
@@ -768,7 +870,20 @@ def bestSellerXSubsidiary():
                     else:
                         productDict[queryResult[item][0]] += 1
                 productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
-                print(productDict)
+                
+                document.add_heading('El producto más vendidos en ' + subsidiary + ' es: ', 1)
+                document.add_paragraph("")
+                
+                document.add_paragraph(productDict[0][0])
+                
+                document.add_heading('El producto menos vendido en ' + subsidiary + ' es: ', 1)
+                document.add_paragraph("")
+                
+                document.add_paragraph(productDict[-1][0])
+                
+                document.save('Reporte de ventas.docx')
+                
+                
                     
         except Exception as e:
             print(e)
@@ -776,8 +891,7 @@ def bestSellerXSubsidiary():
         finally:
             dbConnection.close()    
 
-#bestSellerXSubsidiary()
-
+bestSellerXSubsidiary()
 
 #Run application
 if __name__ == '__main__':
