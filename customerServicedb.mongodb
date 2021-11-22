@@ -1,0 +1,19 @@
+//Create database
+const database = 'CustomerService';
+use(database);
+
+//Create collections
+const database = 'CustomerService';
+use(database);
+db.createCollection('Suggestions');
+
+//List collections
+const database = 'CustomerService';
+use(database);
+db.getCollectionNames();
+
+
+//See reports
+const database = 'CustomerService';
+use(database);
+db.Suggestions.find();

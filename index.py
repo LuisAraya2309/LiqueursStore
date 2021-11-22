@@ -6,6 +6,8 @@ from databaseConnection import *
 from auxiliarFunctions import *
 import json ,requests, os,random
 import shutil
+
+from pymongo import MongoClient
 from docx import Document
 import os
 #App creation
@@ -308,11 +310,14 @@ def buyProduct():
     Country = request.form['Country']
     productName = request.form['productName']
     paymentType = request.form['paymentType']
+    
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
             querySubisidiary = 'EXEC sp_buyProduct ?, ?, ?, ?, ?, ?, ?, ?, ?'
             cursor.execute(querySubisidiary,(subsidiary,userName,price, discount, biller,address,productName,paymentType,0))
+            
+            
 
     except Exception as e:
         print(e)
@@ -320,6 +325,25 @@ def buyProduct():
 
     finally:
         dbConnection.close()
+    
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'EXEC sp_CustomerEmail ?, ?'
+            cursor.execute(querySubisidiary,(userName,0))
+            email = cursor.fetchall()[0][0]
+            message = "Su compra del artículo " + productName + " se ha realizado con éxito.\n"
+            message += "Su envío se acaba de realizar, por favor esté atento en estos días a la llegada del producto."
+            sendEmail(email,message)
+            
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()  
+    
         
     return str("Compra realizada")
 
@@ -464,6 +488,8 @@ def addNewProduct():
     agedType = request.form['Añejado']
     amount = request.form['Cantidad']
     photo = request.files['Foto']
+    food = request.form['Comida']
+    
     if photo.filename != '':
         photo.save(photo.filename)
     fileName = photo.filename
@@ -474,8 +500,8 @@ def addNewProduct():
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
-            query = 'EXEC sp_AddNewProduct ? , ? , ? ,? , ? , ?, ? , ? , ?, ?'
-            cursor.execute(query,(agedType,title,origin,price,years,amount,subsidiary,username,imageBytes,0))
+            query = 'EXEC sp_AddNewProduct ? , ? , ? ,? , ? , ?, ? , ? , ?, ?, ?'
+            cursor.execute(query,(agedType,title,origin,price,years,amount,subsidiary,username,imageBytes,food,0))
             queryResult = cursor.fetchall()
             outResultCode = queryResult[0][0]
             imageLiqueur.close()
@@ -899,8 +925,47 @@ def complain():
 
 @app.route('/doComplain',methods=['GET','POST'])
 def doComplain():
-    
-    return str('Empezar queja')
+    subsidiary = request.form['subsidiary']
+    employee = request.form['employee']
+    suggestion = request.form['suggestion']
+    typeOf = request.form['typeOf']
+    suggestInformation = {'Subsidiaria':subsidiary,
+                          'Empleado':employee,
+                          'Usuario': username,
+                          'Tipo de recomendación':typeOf,
+                          'Comentario':suggestion}
+    client = MongoClient('localhost')
+    dbCS = client['CustomerService']
+    reports = dbCS['Suggestions']
+    reports.insert(suggestInformation)
+    if employee!="":
+        dbConnection = connectToDatabase(country)
+        try:
+            with dbConnection.cursor() as cursor:
+                query = 'SELECT E.Email FROM dbo.Employees AS E WHERE E.Title = ?'
+                cursor.execute(query,(employee))
+                queryResult = cursor.fetchall()
+                email = queryResult[0][0]
+                message = ""
+                for key in suggestInformation:
+                    message+=(str(key) + ":" + str(suggestInformation[key]) + ".\n")
+                
+                sendEmail(email,message)
+                
+                
+                    
+        except Exception as e:
+            print(e)
+            return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        finally:
+            dbConnection.close()
+    else:
+        return str('No hubo empleado')
+        
+        
+@app.route('/beginSignUp',methods=['GET','POST'])
+def signUp():
+    return render_template('signUp.html')
 
 #Run application
 if __name__ == '__main__':

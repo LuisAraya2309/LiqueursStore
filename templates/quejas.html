@@ -18,21 +18,21 @@
     <div class="v1167_150"></div>
     <div class="v1167_151"></div>
     <span class="v1167_152">Buzón de quejas</span>
-    <form action = "/doComplain">
-    <input type="text"  class="v1167_154" name="subsidiary"/>
-    <input type ="text" class="v1170_143">
-    <select class="v1167_155" name="typeOf">
-        <option value="suggestion">Recomendación</option>
-        <option value="complain">Queja</option>  
-    </select>
-    <textarea type="text" class="v1170_141"></textarea>
-    <span class="v1167_162">Subsidiaria</span>
-    <span class="v1170_142">Empleado</span>
-    <span class="v1167_164">Tipo de queja</span>
-    <span class="v1170_140">Recomendación</span>
-    <div class="v1170_147"></div>
-    <div class="v1170_149">
-        <input type="submit" class="v1170_150" value="Enviar"></input>
+    <form action = "/doComplain" method="post">
+        <input type="text"  class="v1167_154" name="subsidiary"/>
+        <input type ="text" class="v1170_143" name= "employee">
+        <select class="v1167_155" name="typeOf">
+            <option value="Recomendación">Recomendación</option>
+            <option value="Queja">Queja</option>  
+        </select>
+        <textarea type="text" class="v1170_141" name="suggestion"></textarea>
+        <span class="v1167_162">Subsidiaria</span>
+        <span class="v1170_142">Empleado</span>
+        <span class="v1167_164">Tipo de queja</span>
+        <span class="v1170_140">Recomendación</span>
+        <div class="v1170_147"></div>
+        <div class="v1170_149">
+            <input type="submit" class="v1170_150" value="Enviar"></input>
     </form>
     </div></div>
 </body>
