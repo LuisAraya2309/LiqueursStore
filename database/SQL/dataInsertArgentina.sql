@@ -529,6 +529,8 @@ INSERT INTO dbo.GreatCombinations --Smirnoff
 
 
 
+
+
 --Insertar transacciones
 /*
 INSERT INTO dbo.Transactions

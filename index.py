@@ -464,21 +464,21 @@ def addNewProduct():
     agedType = request.form['Añejado']
     amount = request.form['Cantidad']
     photo = request.files['Foto']
-
-    if photo.filename: 
-        
-        fn = os.path.basename(photo.filename) 
-        open(fn, 'wb').write(photo.file.read())
-        
+    if photo.filename != '':
+        photo.save(photo.filename)
+    fileName = photo.filename
     
+    imageLiqueur = open(fileName,'rb')
+    imageBytes = imageLiqueur.read()
+    imageLiqueur.close()
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
             query = 'EXEC sp_AddNewProduct ? , ? , ? ,? , ? , ?, ? , ? , ?, ?'
-            cursor.execute(query,(agedType,title,origin,price,years,amount,subsidiary,username,photo.file.read(),0))
+            cursor.execute(query,(agedType,title,origin,price,years,amount,subsidiary,username,imageBytes,0))
             queryResult = cursor.fetchall()
             outResultCode = queryResult[0][0]
-
+            imageLiqueur.close()
             if outResultCode != 1:
                 return render_template('addProduct.html')+ '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
@@ -492,7 +492,7 @@ def addNewProduct():
                                             close_button.addEventListener("click", function(e) {
                                             e.preventDefault();
                                             document.getElementById("window-notice").style.display = "none";
-                                            window.location.href="/";
+                                            window.location.href="/returnAdmin";
                                         });
                             </script>
                             '''
@@ -536,7 +536,7 @@ def saleXCountryDoc(listTransaction):
 
 def saleXSubsidiaryDoc(listTransaction, subsidiary):
 
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading("La sucursal " + subsidiary + ' registró ' + str(len(listTransaction)) + ' venta(s)', level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -546,7 +546,7 @@ def saleXSubsidiaryDoc(listTransaction, subsidiary):
     document.save('Reporte de ventas.docx')
        
 def saleXSubsidiaryXProductsDoc(listTransaction, productTitle):
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(len(listTransaction)) + ' venta(s) del licor '+ productTitle, level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -556,7 +556,7 @@ def saleXSubsidiaryXProductsDoc(listTransaction, productTitle):
     document.save('Reporte de ventas.docx')      
 
 def saleXDateDoc(date, subsidiaryTitle, listTransaction):
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(subsidiaryTitle + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(date) , level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -566,7 +566,7 @@ def saleXDateDoc(date, subsidiaryTitle, listTransaction):
     document.save('Reporte de ventas.docx')    
 
 def saleXPaymentTypeDoc(listTransaction):
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) por medio de '+ str(listTransaction[0][4]), level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -576,7 +576,7 @@ def saleXPaymentTypeDoc(listTransaction):
     document.save('Reporte de ventas.docx')   
 
 def saleXDatexPaymentTypeDoc(listTransaction):
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(listTransaction[0][1]) +' por medio de '+ str(listTransaction[0][4]), level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -765,7 +765,7 @@ def mainBatteryReport():
     
     createSalesXCountry()
     
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_heading('Ventas por subsidiaria', 0)
     
     subsidiaryList = subsidiaryXCountry()        
@@ -775,16 +775,16 @@ def mainBatteryReport():
         
         createSalesXSubisidiary(subsidiary+1 , subsidiaryList[subsidiary] ) #This function creates the sales per subsidiary report
         productXSubsidiaryList = productsXSubsidiary(subsidiary+1)  
-        document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+        document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
         document.add_heading('Ventas por subsidiaria por producto', 0)
         for product in range(0,len(productXSubsidiaryList)):
             createSaleXSubsidiaryXProduct(product+1,subsidiary+1 ,productXSubsidiaryList[product])
             
-mainBatteryReport()     
+#mainBatteryReport()     
 
 def saleXSubsidiaryXDateXPaymentType():
     
-    document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
     document.add_paragraph("")
     document.add_heading('Ventas por fecha y/o tipo de pago', 0)
     document.save('Reporte de ventas.docx')
@@ -805,14 +805,14 @@ def saleXSubsidiaryXDateXPaymentType():
             for type in range(0,len(paymentTypeList)):    
                 createSalesXDateXPaymentType(date,type+1, subsidiary)
                      
-saleXSubsidiaryXDateXPaymentType()
+#saleXSubsidiaryXDateXPaymentType()
 
 def bestSellerXCountry():
 
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
-            document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+            document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
             document.add_paragraph("")
             document.add_heading('Productos más/menos comprados', 0)
             bestSellerProduct = 'EXEC sp_titleProductTransaction  ?'
@@ -850,7 +850,7 @@ def bestSellerXCountry():
     finally:
         dbConnection.close()  
           
-bestSellerXCountry()
+#bestSellerXCountry()
 
 def bestSellerXSubsidiary():
     subsidiaryList = subsidiaryXCountry()        
@@ -858,7 +858,7 @@ def bestSellerXSubsidiary():
         dbConnection = connectToDatabase(country)
         try:
             with dbConnection.cursor() as cursor:
-                document = Document('C:/Users/Sebastian/Desktop/Prueba/reportes/Reporte de ventas.docx')
+                document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
                 bestSellerProduct = 'EXEC sp_titleProductTransactionXSubsidiary ? ,  ?'
                 cursor.execute(bestSellerProduct,(subsidiary,0))
                 queryResult = cursor.fetchall()
@@ -891,7 +891,10 @@ def bestSellerXSubsidiary():
         finally:
             dbConnection.close()    
 
-bestSellerXSubsidiary()
+#bestSellerXSubsidiary()
+
+
+
 
 #Run application
 if __name__ == '__main__':
