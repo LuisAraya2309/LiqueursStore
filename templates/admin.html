@@ -3,7 +3,7 @@
         <head>
             <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre+Medium&display=swap" rel="stylesheet" />
-            <link href= "{{ url_for('static',filename='css/adminStyle.css') }}" type = "text/css" rel="stylesheet" />
+            <link href= "{{ url_for('static',filename='css/admin.css') }}" type = "text/css" rel="stylesheet" />
             <title>Administrador</title>
         </head>
         <body>
@@ -15,7 +15,7 @@
                     <input class="v1084_147" type="text"  id="productName" name="productName"></input>
                 </form>
 
-                <form class="form2">
+                <form class="form2" method = "post" action = "/productStock">
                     <span class="v1084_143">Nombre</span>
                     <input type = "submit" class="v1084_145" value = "Cant. Inventario"></input>
                     <input class="v1084_150" type="text"  id="productName" name="productName"></input>
@@ -23,7 +23,7 @@
                 
                 <div class="v1084_149"></div>
                
-                <form class="form3">
+                <form class="form3" method="post" action="/editPrice">
                     <span class="v1084_172">Nombre</span>
                     <input type = "submit" class="v1084_173" value = "Actualizar precio"></input>
                     <span class="v1084_170">Nuevo precio</span>

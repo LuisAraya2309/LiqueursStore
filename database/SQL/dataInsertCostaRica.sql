@@ -16,6 +16,12 @@ INSERT INTO dbo.TransactionType
 		'AddLiqueur'
 	)
 
+INSERT INTO dbo.TransactionType
+	VALUES
+	(
+		'Buy'
+	)
+
 --Insertar tipos de Pagos     ####################################
 INSERT INTO dbo.PaymentTypes
 	VALUES

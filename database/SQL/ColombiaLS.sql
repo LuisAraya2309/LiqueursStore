@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ColombiaLS]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Database [ColombiaLS]    Script Date: 21/11/2021 21:07:25 ******/
 CREATE DATABASE [ColombiaLS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [ColombiaLS] SET QUERY_STORE = OFF
 GO
 USE [ColombiaLS]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,7 +102,7 @@ CREATE TABLE [dbo].[Customers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[CustomerType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [dbo].[CustomerType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EmployeePerSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[EmployeePerSubsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[EmployeePerSubsidiary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employees]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Employees]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Employees](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EmployeeType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[EmployeeType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[EmployeeType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Errors]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Errors]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[Errors](
 	[GETDATE] [datetime] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Food]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Food]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,7 +195,7 @@ CREATE TABLE [dbo].[Food](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GreatCombinations]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[GreatCombinations]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +210,7 @@ CREATE TABLE [dbo].[GreatCombinations](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LiqueurInfo]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[LiqueurInfo]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -228,7 +228,7 @@ CREATE TABLE [dbo].[LiqueurInfo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Liqueurs]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Liqueurs]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +244,7 @@ CREATE TABLE [dbo].[Liqueurs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -258,7 +258,7 @@ CREATE TABLE [dbo].[PaymentTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Schedules]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Schedules]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -275,7 +275,7 @@ CREATE TABLE [dbo].[Schedules](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shippings]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Shippings]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -291,7 +291,7 @@ CREATE TABLE [dbo].[Shippings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Stock]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Stock]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +307,7 @@ CREATE TABLE [dbo].[Stock](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Subsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -322,7 +322,7 @@ CREATE TABLE [dbo].[Subsidiary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaxesReport]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[TaxesReport]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -337,7 +337,7 @@ CREATE TABLE [dbo].[TaxesReport](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transactions]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Transactions]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -358,7 +358,7 @@ CREATE TABLE [dbo].[Transactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TransactionType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[TransactionType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -372,7 +372,7 @@ CREATE TABLE [dbo].[TransactionType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -478,88 +478,88 @@ REFERENCES [dbo].[Users] ([Id])
 GO
 ALTER TABLE [dbo].[Transactions] CHECK CONSTRAINT [FK_Transactions_Users]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AddEmployee]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_AddEmployee]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[sp_AddEmployee]
-    @inSubsidiary VARCHAR(50),
-    @inEmployeeType VARCHAR(50),
-    @inTitle VARCHAR(50),
-    @inEmail VARCHAR(50),
-    @inPhone INT,
-    @inAge INT,
-    @inPhoto VARBINARY(MAX),
-    @OutResultCode INT OUTPUT
+	@inSubsidiary VARCHAR(50),
+	@inEmployeeType VARCHAR(50),
+	@inTitle VARCHAR(50),
+	@inEmail VARCHAR(50),
+	@inPhone INT,
+	@inAge INT,
+	@inPhoto VARBINARY(MAX),
+	@OutResultCode INT OUTPUT
 
 AS
 BEGIN
-        SET NOCOUNT ON;
-        BEGIN TRY
+		SET NOCOUNT ON;
+		BEGIN TRY
 
-        DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
-        DECLARE @idEmployeeType INT = (SELECT ET.Id FROM dbo.EmployeeType AS ET WHERE ET.Job = @inEmployeeType);
+		DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
+		DECLARE @idEmployeeType INT = (SELECT ET.Id FROM dbo.EmployeeType AS ET WHERE ET.Job = @inEmployeeType);
 
-        SELECT
-            @OutResultCode=0 ;
+		SELECT
+			@OutResultCode=0 ;
+		
+		INSERT INTO dbo.Employees
+			(
+				IdEmployeeType,
+				Title,
+				Email,
+				Phone,
+				Age,
+				Photo
+			)
+		VALUES
+			(
+				@idEmployeeType,
+				@inTitle,
+				@inEmail,
+				@inPhone,
+				@inAge,
+				@inPhoto
+			)
 
-        INSERT INTO dbo.Employees
-            (
-                IdEmployeeType,
-                Title,
-                Email,
-                Phone,
-                Age,
-                Photo
-            )
-        VALUES
-            (
-                @idEmployeeType,
-                @inTitle,
-                @inEmail,
-                @inPhone,
-                @inAge,
-                @inPhoto
-            )
+		
 
+		INSERT INTO dbo.EmployeePerSubsidiary
+			(
+			IdSubsidiary,
+			IdEmployee
+			)
+		VALUES
+			(
+			@idSubsidiary,
+			(SELECT MAX(Id) FROM dbo.Employees)
+			)
 
+		END TRY
+		BEGIN CATCH
 
-        INSERT INTO dbo.EmployeePerSubsidiary
-            (
-            IdSubsidiary,
-            IdEmployee
-            )
-        VALUES
-            (
-            @idSubsidiary,
-            (SELECT MAX(Id) FROM dbo.Employees)
-            )
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
 
-        END TRY
-        BEGIN CATCH
+				Set @OutResultCode=50005;
+				SELECT @OutResultCode;
+		END CATCH;
 
-                INSERT INTO dbo.Errors    VALUES (
-                    SUSER_SNAME(),
-                    ERROR_NUMBER(),
-                    ERROR_STATE(),
-                    ERROR_SEVERITY(),
-                    ERROR_LINE(),
-                    ERROR_PROCEDURE(),
-                    ERROR_MESSAGE(),
-                    GETDATE()
-                );
-
-                Set @OutResultCode=50005;
-                SELECT @OutResultCode;
-        END CATCH;
-
-        SET NOCOUNT OFF;
+		SET NOCOUNT OFF;
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AddNewProduct]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_AddNewProduct]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -716,7 +716,256 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EmployeesPerSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_buyProduct]    Script Date: 21/11/2021 21:07:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[sp_buyProduct]
+	@inSubsidiary VARCHAR(50),
+	@inUsername VARCHAR(50),
+	@inPrice MONEY,
+	@inDiscount MONEY,
+	@inBiller VARCHAR(50),
+	@inAddress VARCHAR(50),
+	@inProductName VARCHAR(50),
+	@inPaymentType VARCHAR(50),
+	@OutResultCode INT OUTPUT
+
+AS
+BEGIN
+		SET NOCOUNT ON;
+		BEGIN TRY
+
+			SELECT
+				@OutResultCode=0 ;
+			
+			DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
+			DECLARE @idUserCustomer INT = (SELECT U.Id FROM dbo.Users AS U WHERE U.Username = @inUsername);
+			DECLARE @idCustomer INT = (SELECT C.Id FROM dbo.Customers AS C WHERE C.IdUser = @idUserCustomer);
+			DECLARE @idUserBiller INT = (SELECT E.Id FROM dbo.Employees AS E WHERE E.Title = @inBiller);
+			DECLARE @idPaymentType  INT;
+			DECLARE @taxes MONEY = '0.0';
+			DECLARE @shippingCosts MONEY = '0.0';
+			DECLARE @totalPrice MONEY = '0.0';
+			DECLARE @idLiqueur INT = (SELECT L.Id FROM dbo.Liqueurs AS L WHERE L.Title = @inProductName);
+			
+
+			--Calcular costo de envío si es un usuario Normal
+			IF ((SELECT C.IdUserType FROM dbo.Customers AS C WHERE C.Id = @idCustomer) = 1) AND (@inAddress = 'Casa')
+				BEGIN
+					DECLARE @shippingDistance FLOAT;
+					DECLARE @houseAddress GEOGRAPHY = (SELECT C.Address FROM dbo.Customers AS C WHERE C.Id = @idCustomer);
+					SET @shippingDistance = (SELECT @houseAddress.STDistance((SELECT S.Address FROM dbo.Subsidiary AS S WHERE S.Id = @idSubsidiary))) / 1000;
+					SET @shippingCosts = @shippingDistance * 0.5
+				END
+			ELSE IF @inAddress = 'Casa'  --Es un envio pero el cliente es VIp
+				BEGIN
+					SET @shippingCosts = '0.0'
+				END
+
+			--Aplicar descuento
+			IF @inDiscount > '0.0'
+				BEGIN
+					SET @totalPrice = (@inPrice + @shippingCosts) - ((@inPrice + @shippingCosts)*0.10);
+					SET @inDiscount = (@inPrice + @shippingCosts)*0.10;
+				END
+			ELSE IF @shippingCosts = '0.0'
+				BEGIN
+					SET @totalPrice = @inPrice - @inDiscount;
+				END
+			ELSE
+				BEGIN
+					SET @totalPrice = @inPrice;
+				END
+		
+			
+
+			IF @inPaymentType = 'Tarjeta de Crédito'
+				BEGIN
+					SET @idPaymentType = 2;
+					SET @taxes = @totalPrice * 0.10;
+				END
+			ELSE
+				BEGIN
+					SET @idPaymentType = 3;
+				END
+
+
+			INSERT INTO dbo.Transactions
+				(
+					IdTransactionType,
+					IdSubsidiary,
+					IdUser,
+					IdLiqueur,
+					IdPaymentType,
+					TranDate,
+					Discount,
+					Price
+				)
+				VALUES
+				(
+					3,
+					@idSubsidiary,
+					@idUserCustomer,
+					@idLiqueur,
+					@idPaymentType,
+					GETDATE(),
+					@inDiscount,
+					@totalPrice
+				)
+
+			INSERT INTO dbo.Transactions
+				(
+					IdTransactionType,
+					IdSubsidiary,
+					IdUser,
+					IdLiqueur,
+					IdPaymentType,
+					TranDate,
+					Discount,
+					Price
+				)
+				VALUES
+				(
+					1,
+					@idSubsidiary,
+					@idUserBiller,
+					@idLiqueur,
+					@idPaymentType,
+					GETDATE(),
+					@inDiscount,
+					@totalPrice
+				)
+
+
+			IF @inAddress = 'Casa'
+				BEGIN
+					INSERT INTO dbo.Shippings
+						(
+							IdTransaction,
+							OriginAddress,
+							DestinyAddress
+						)
+					VALUES
+						(	
+							(SELECT MAX(Id) FROM dbo.Transactions),
+							(SELECT S.Address FROM dbo.Subsidiary AS S WHERE S.Id = @idSubsidiary),
+							@houseAddress
+						)
+				END
+
+			IF @idPaymentType = 2
+				BEGIN
+					INSERT INTO dbo.TaxesReport
+						(
+							IdTransaction,
+							Amount
+						)
+						VALUES
+						(
+							(SELECT MAX(Id) FROM dbo.Transactions),
+							@taxes
+						)
+				END
+
+			IF (SELECT COUNT(Id) FROM dbo.Transactions AS T WHERE T.IdUser = @idUserCustomer 
+				AND 
+				DATEPART(MONTH,T.TranDate) = DATEPART(MONTH,GETDATE()) ) >= 5 
+				BEGIN
+					UPDATE dbo.Customers
+						SET
+							IdUserType = 2
+					WHERE Id = @idCustomer;
+				END
+
+
+		END TRY
+		BEGIN CATCH
+
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
+
+				Set @OutResultCode=50005;
+				SELECT @OutResultCode;
+		END CATCH;
+
+		SET NOCOUNT OFF;
+
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CustomerDiscount]    Script Date: 21/11/2021 21:07:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[sp_CustomerDiscount]
+	@inUsername VARCHAR(50),
+	@OutResultCode INT OUTPUT
+
+AS
+BEGIN
+		SET NOCOUNT ON;
+		BEGIN TRY
+
+			SELECT
+				@OutResultCode=0 ;
+
+
+			DECLARE @discountLevel MONEY = '750';
+			DECLARE @idUser INT = (SELECT U.Id FROM dbo.Users AS U WHERE U.Username =@inUsername);
+			DECLARE @idCustomer INT = (SELECT C.Id FROM dbo.Customers AS C WHERE C.IdUser = @idUser);
+			DECLARE @actualMonth INT = DATEPART(MONTH,GETDATE());
+			DECLARE @amountOfTrans MONEY;
+			SET @amountOfTrans = (
+				SELECT SUM(T.Price)
+					FROM dbo.Transactions AS T
+				WHERE T.IdUser = @idUser AND (DATEPART(MONTH,T.TranDate) = @actualMonth)
+			);
+			IF @amountOfTrans > @discountLevel
+				SELECT 'True'
+			ELSE
+				SELECT 'False'
+
+
+
+		END TRY
+		BEGIN CATCH
+
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
+
+				Set @OutResultCode=50005;
+				select @OutResultCode;
+				
+		END CATCH;
+
+		SET NOCOUNT OFF;
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_EmployeesPerSubsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -725,47 +974,47 @@ GO
 
 
 CREATE PROCEDURE [dbo].[sp_EmployeesPerSubsidiary]
-    @inSubsidiary VARCHAR(50),
-    @OutResultCode INT OUTPUT
+	@inSubsidiary VARCHAR(50),
+	@OutResultCode INT OUTPUT
 
 AS
 BEGIN
-        SET NOCOUNT ON;
-        BEGIN TRY
-            DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary );
-            SELECT 
-                E.Title
-            FROM dbo.Employees AS E
-            INNER JOIN dbo.EmployeePerSubsidiary AS ES
-            ON ES.IdEmployee = E.Id
-            WHERE ES.IdSubsidiary = @idSubsidiary;
+		SET NOCOUNT ON;
+		BEGIN TRY
+			DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary );
+			SELECT 
+				E.Title
+			FROM dbo.Employees AS E
+			INNER JOIN dbo.EmployeePerSubsidiary AS ES
+			ON ES.IdEmployee = E.Id
+			WHERE ES.IdSubsidiary = @idSubsidiary;
 
+		
 
+		END TRY
+		BEGIN CATCH
 
-        END TRY
-        BEGIN CATCH
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
 
-                INSERT INTO dbo.Errors    VALUES (
-                    SUSER_SNAME(),
-                    ERROR_NUMBER(),
-                    ERROR_STATE(),
-                    ERROR_SEVERITY(),
-                    ERROR_LINE(),
-                    ERROR_PROCEDURE(),
-                    ERROR_MESSAGE(),
-                    GETDATE()
-                );
+				Set @OutResultCode=50005;
+				SELECT @OutResultCode;
+				
+		END CATCH;
 
-                Set @OutResultCode=50005;
-                SELECT @OutResultCode;
-
-        END CATCH;
-
-        SET NOCOUNT OFF;
+		SET NOCOUNT OFF;
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getDates]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_getDates]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -774,7 +1023,6 @@ GO
 
 
 CREATE PROCEDURE [dbo].[sp_getDates]
-	@inSubsidiary VARCHAR(50),
 	@OutResultCode INT OUTPUT
 
 AS
@@ -784,13 +1032,11 @@ BEGIN
 
 			SELECT
 				@OutResultCode = 0 ;
-			DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary); 
 
 			SELECT
 				T.TranDate
 			FROM dbo.Transactions AS T
-			WHERE T.IdTransactionType = 1 AND
-			T.IdSubsidiary = @idSubsidiary;
+			WHERE T.IdTransactionType = 1
 
 		END TRY
 		BEGIN CATCH
@@ -817,7 +1063,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getPaymentType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_getPaymentType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -865,7 +1111,67 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_productXSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ProductStock]    Script Date: 21/11/2021 21:07:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[sp_ProductStock]
+	@inTitle VARCHAR(50),
+	@OutResultCode INT OUTPUT
+
+AS
+BEGIN
+		SET NOCOUNT ON;
+		BEGIN TRY
+
+			SELECT
+				@OutResultCode=0 ;
+			
+			DECLARE @idLiqueur INT = (SELECT L.Id FROM dbo.Liqueurs AS L WHERE L.Title = @inTitle);
+			IF @idLiqueur IS NOT NULL
+				BEGIN
+					SELECT 
+						S.Amount,
+						Sub.Title,
+						@OutResultCode
+					FROM dbo.Stock AS S
+					INNER JOIN dbo.Subsidiary AS Sub
+					ON S.IdSubsidiary = Sub.Id
+					WHERE S.IdLiqueur = @idLiqueur;
+				END
+			ELSE
+				BEGIN
+					SET @OutResultCode = 1;
+					SELECT @OutResultCode;
+				END
+
+
+		END TRY
+		BEGIN CATCH
+
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
+
+				Set @OutResultCode=50005;
+				SELECT @OutResultCode;
+		END CATCH;
+
+		SET NOCOUNT OFF;
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_productXSubsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -914,7 +1220,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXCountry]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXCountry]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -972,7 +1278,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXDate]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXDate]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -981,7 +1287,6 @@ GO
 
 
 CREATE PROCEDURE [dbo].[sp_salesXDate]
-	@inSubsidiary VARCHAR(50),
 	@inDate DATE,
 	@OutResultCode INT OUTPUT
 
@@ -992,8 +1297,6 @@ BEGIN
 
 		SELECT
 			@OutResultCode=0 ;
-
-		DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
 
 		SELECT
 			(SELECT S.Title FROM dbo.Subsidiary AS S WHERE S.Id = T.IdSubsidiary) AS SubsidiaryTitle,
@@ -1008,8 +1311,7 @@ BEGIN
 		FROM dbo.Transactions AS T
 		WHERE 
 			T.IdTransactionType = 1 AND
-			T.TranDate = @inDate AND
-			T.IdSubsidiary = @idSubsidiary;
+			T.TranDate = @inDate;
 
 		END TRY
 		BEGIN CATCH
@@ -1036,73 +1338,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXDateXPaymentType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-
-CREATE PROCEDURE [dbo].[sp_salesXDateXPaymentType]
-	@inSubsidiary VARCHAR(50),
-	@inDate DATE,
-	@inPaymentType INT,
-	@OutResultCode INT OUTPUT
-
-AS
-BEGIN
-		SET NOCOUNT ON;
-		BEGIN TRY
-
-		SELECT
-			@OutResultCode=0 ;
-		DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
-
-		SELECT
-			(SELECT S.Title FROM dbo.Subsidiary AS S WHERE S.Id = T.IdSubsidiary) AS SubsidiaryTitle,
-			T.TranDate AS TranDate,
-			(SELECT U.Username FROM dbo.Users AS U WHERE U.Id = T.IdUser) AS username,
-			(SELECT L.Title FROM dbo.Liqueurs AS L WHERE L.Id = T.IdLiqueur) AS LiqueurTitle,
-			(SELECT PT.Title FROM dbo.PaymentTypes AS PT WHERE PT.Id = T.IdPaymentType) AS PaymentType,
-			T.Discount AS Discount,
-			T.Price AS Price
-			
-
-		FROM dbo.Transactions AS T
-		WHERE 
-			T.IdTransactionType = 1 AND
-			T.TranDate = @inDate AND
-			T.IdPaymentType = @inPaymentType AND
-			T.IdSubsidiary = @idSubsidiary;
-
-		END TRY
-		BEGIN CATCH
-
-				INSERT INTO dbo.Errors	VALUES (
-					SUSER_SNAME(),
-					ERROR_NUMBER(),
-					ERROR_STATE(),
-					ERROR_SEVERITY(),
-					ERROR_LINE(),
-					ERROR_PROCEDURE(),
-					ERROR_MESSAGE(),
-					GETDATE()
-				);
-
-				Set @OutResultCode=50005;
-				SELECT @OutResultCode;
-				
-		END CATCH;
-
-		SET NOCOUNT OFF;
-
-END
-
-
-GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXPaymentType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXPaymentType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1111,7 +1347,6 @@ GO
 
 
 CREATE PROCEDURE [dbo].[sp_salesXPaymentType]
-	@inSubsidiary VARCHAR(50),
 	@inIdPaymentType INT,
 	@OutResultCode INT OUTPUT
 																									
@@ -1122,7 +1357,6 @@ BEGIN
 
 		SELECT
 			@OutResultCode=0 ;
-		DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
 
 		SELECT
 			(SELECT S.Title FROM dbo.Subsidiary AS S WHERE S.Id = T.IdSubsidiary) AS SubsidiaryTitle,
@@ -1136,8 +1370,7 @@ BEGIN
 		FROM dbo.Transactions AS T
 		WHERE 
 			T.IdTransactionType = 1 AND
-			T.IdPaymentType = @inIdPaymentType AND
-			T.IdSubsidiary = @idSubsidiary;
+			T.IdPaymentType = @inIdPaymentType;
 
 		END TRY
 		BEGIN CATCH
@@ -1164,7 +1397,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1223,7 +1456,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiaryXProduct]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiaryXProduct]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1282,7 +1515,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SignIn]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_SignIn]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1339,7 +1572,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SignUp]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_SignUp]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1439,97 +1672,96 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SubsidiaryAvailable]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_SubsidiaryAvailable]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[sp_SubsidiaryAvailable]
-    @inTitle VARCHAR(50),
-    @inUsername VARCHAR(50),
-    @OutResultCode INT OUTPUT
+	@inTitle VARCHAR(50),
+	@inUsername VARCHAR(50),
+	@OutResultCode INT OUTPUT
 
 AS
 BEGIN
-        SET NOCOUNT ON;
-        BEGIN TRY
-            SELECT 
-                @OutResultCode=0 ;
-                DECLARE @idUser INT = (SELECT U.Id FROM dbo.Users AS U WHERE U.Username = @inUsername );
-                DECLARE @idLiqueur INT = (SELECT L.Id FROM dbo.Liqueurs AS L WHERE L.Title = @inTitle);
-                DECLARE @addressCustomer GEOGRAPHY = (SELECT C.Address FROM dbo.Customers AS C WHERE C.IdUser = @idUser);
-                DECLARE @subsidiariesDistance TABLE(Id INT IDENTITY (1,1),Title VARCHAR(50),Distance FLOAT NULL);
-                INSERT INTO @subsidiariesDistance
-                    SELECT
-                        S.Title,
-                        NULL
-                    FROM dbo.Subsidiary AS S
-                
-                SELECT * FROM @subsidiariesDistance;
-                        
-                DECLARE @idx INT = (SELECT COUNT(*) FROM @subsidiariesDistance);
-                DECLARE @minorDistance FLOAT = 0.0;
-                DECLARE @nearestSubsidiary VARCHAR(50);
-                WHILE @idx > 0
-                    BEGIN
-                        DECLARE @auxSubsidiary VARCHAR(50) = (SELECT Title FROM @subsidiariesDistance AS T WHERE T.Id = @idx);
-                        DECLARE @subsidiaryDistance GEOGRAPHY = (SELECT S.Address FROM dbo.Subsidiary AS S WHERE S.Title = @auxSubsidiary);
-                        SET @minorDistance = (SELECT @addressCustomer.STDistance(@subsidiaryDistance));
-                        UPDATE @subsidiariesDistance
-                            SET Distance = @minorDistance
-                        WHERE Title = @auxSubsidiary;
-                        
-                        SELECT @idx = @idx - 1;
-                    END
+		SET NOCOUNT ON;
+		BEGIN TRY
+			SELECT 
+				@OutResultCode=0 ;
+				DECLARE @idUser INT = (SELECT U.Id FROM dbo.Users AS U WHERE U.Username = @inUsername );
+				DECLARE @idLiqueur INT = (SELECT L.Id FROM dbo.Liqueurs AS L WHERE L.Title = @inTitle);
+				DECLARE @addressCustomer GEOGRAPHY = (SELECT C.Address FROM dbo.Customers AS C WHERE C.IdUser = @idUser);
+				DECLARE @subsidiariesDistance TABLE(Id INT IDENTITY (1,1),Title VARCHAR(50),Distance FLOAT NULL);
+				INSERT INTO @subsidiariesDistance
+					SELECT
+						S.Title,
+						NULL
+					FROM dbo.Subsidiary AS S
+				
+						
+				DECLARE @idx INT = (SELECT COUNT(*) FROM @subsidiariesDistance);
+				DECLARE @minorDistance FLOAT = 0.0;
+				DECLARE @nearestSubsidiary VARCHAR(50);
+				WHILE @idx > 0
+					BEGIN
+						DECLARE @auxSubsidiary VARCHAR(50) = (SELECT Title FROM @subsidiariesDistance AS T WHERE T.Id = @idx);
+						DECLARE @subsidiaryDistance GEOGRAPHY = (SELECT S.Address FROM dbo.Subsidiary AS S WHERE S.Title = @auxSubsidiary);
+						SET @minorDistance = (SELECT @addressCustomer.STDistance(@subsidiaryDistance));
+						UPDATE @subsidiariesDistance
+							SET Distance = @minorDistance
+						WHERE Title = @auxSubsidiary;
+						
+						SELECT @idx = @idx - 1;
+					END
 
-                SELECT @minorDistance = (SELECT MIN(Distance) FROM @subsidiariesDistance);
+				SELECT @minorDistance = (SELECT MIN(Distance) FROM @subsidiariesDistance);
 
-                SELECT @nearestSubsidiary = (
-                        SELECT 
-                            Title
-                        FROM @subsidiariesDistance
-                        WHERE Distance = @minorDistance
-                );
-
-
-                SELECT DISTINCT
-                    S.Title,
-                    @nearestSubsidiary,
-                    @minorDistance,
-                    @OutResultCode
-                FROM dbo.Subsidiary AS S
-                INNER JOIN Stock AS ST
-                ON ST.IdLiqueur = @idLiqueur
-                WHERE Amount>0;
+				SELECT @nearestSubsidiary = (
+						SELECT 
+							Title
+						FROM @subsidiariesDistance
+						WHERE Distance = @minorDistance
+				);
 
 
-        END TRY
-        BEGIN CATCH
+				SELECT DISTINCT
+					S.Title,
+					@nearestSubsidiary AS Nearest,
+					@minorDistance,
+					@OutResultCode
+				FROM dbo.Subsidiary AS S
+				INNER JOIN Stock AS ST
+				ON ST.IdLiqueur = @idLiqueur
+				WHERE Amount>0;
 
-                
 
-                INSERT INTO dbo.Errors    VALUES (
-                    SUSER_SNAME(),
-                    ERROR_NUMBER(),
-                    ERROR_STATE(),
-                    ERROR_SEVERITY(),
-                    ERROR_LINE(),
-                    ERROR_PROCEDURE(),
-                    ERROR_MESSAGE(),
-                    GETDATE()
-                );
+		END TRY
+		BEGIN CATCH
 
-                Set @OutResultCode=50005;
-                SELECT @OutResultCode;
-                
-        END CATCH;
+				
 
-        SET NOCOUNT OFF;
+				INSERT INTO dbo.Errors	VALUES (
+					SUSER_SNAME(),
+					ERROR_NUMBER(),
+					ERROR_STATE(),
+					ERROR_SEVERITY(),
+					ERROR_LINE(),
+					ERROR_PROCEDURE(),
+					ERROR_MESSAGE(),
+					GETDATE()
+				);
+
+				Set @OutResultCode=50005;
+				SELECT @OutResultCode;
+				
+		END CATCH;
+
+		SET NOCOUNT OFF;
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_subsidiaryXCountry]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_subsidiaryXCountry]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1576,106 +1808,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_titleProductTransaction]    Script Date: 19/11/2021 07:00:38 p. m. ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-CREATE PROCEDURE [dbo].[sp_titleProductTransaction]
-	@OutResultCode INT OUTPUT
-
-AS
-BEGIN
-		SET NOCOUNT ON;
-		BEGIN TRY
-
-			SELECT
-				@OutResultCode=0 ;
-
-			SELECT
-				(SELECT L.Title FROM dbo.Liqueurs AS L WHERE L.Id = T.IdLiqueur)
-			FROM dbo.Transactions AS T
-			WHERE T.IdTransactionType = 1;
-
-		END TRY
-		BEGIN CATCH
-
-				INSERT INTO dbo.Errors	VALUES (
-					SUSER_SNAME(),
-					ERROR_NUMBER(),
-					ERROR_STATE(),
-					ERROR_SEVERITY(),
-					ERROR_LINE(),
-					ERROR_PROCEDURE(),
-					ERROR_MESSAGE(),
-					GETDATE()
-				);
-
-				Set @OutResultCode=50005;
-				SELECT @OutResultCode;
-				
-		END CATCH;
-
-		SET NOCOUNT OFF;
-
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[sp_titleProductTransactionXSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-CREATE PROCEDURE [dbo].[sp_titleProductTransactionXSubsidiary]
-	@inSubsidiary VARCHAR(50),
-	@OutResultCode INT OUTPUT
-
-AS
-BEGIN
-		SET NOCOUNT ON;
-		BEGIN TRY
-
-			SELECT
-				@OutResultCode=0 ;
-			DECLARE @idSubsidiary INT = (SELECT S.Id FROM dbo.Subsidiary AS S WHERE S.Title = @inSubsidiary);
-
-			SELECT
-				(SELECT L.Title FROM dbo.Liqueurs AS L WHERE L.Id = T.IdLiqueur)
-			FROM dbo.Transactions AS T
-			WHERE T.IdTransactionType = 1 AND
-			T.IdSubsidiary = @idSubsidiary;
-
-		END TRY
-		BEGIN CATCH
-
-				INSERT INTO dbo.Errors	VALUES (
-					SUSER_SNAME(),
-					ERROR_NUMBER(),
-					ERROR_STATE(),
-					ERROR_SEVERITY(),
-					ERROR_LINE(),
-					ERROR_PROCEDURE(),
-					ERROR_MESSAGE(),
-					GETDATE()
-				);
-
-				Set @OutResultCode=50005;
-				SELECT @OutResultCode;
-				
-		END CATCH;
-
-		SET NOCOUNT OFF;
-
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[sp_UpdatePrice]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_UpdatePrice]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1733,7 +1866,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewEmployee]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewEmployee]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1752,17 +1885,13 @@ BEGIN
 			SELECT
 				@OutResultCode=0 ;
 
-			SELECT 
-
-				@inEmployeeName AS EmployeeName,
-				(SELECT Et.Job FROM dbo.EmployeeType AS Et WHERE Et.Id = E.IdEmployeeType) AS Job,
-				E.Email AS Email,
-				E.Phone AS PhoneNumber,
-				E.Age AS Age,
-				(SELECT EPA.Photo FROM dbo.EmployeePA AS EPA WHERE EPA.IdEmployee = E.Id) AS Photo,
-				(SELECT EPA.Address FROM dbo.EmployeePA AS EPA WHERE EPA.IdEmployee = E.Id) AS EmployeeAdress,
-
-				@OutResultCode AS OutResultCode
+			DECLARE @idEmployee INT = (SELECT E.Id FROM dbo.Employees AS E WHERE E.Title = @inEmployeeName);
+			DECLARE @idEmployeeType INT = (SELECT E.IdEmployeeType FROM dbo.Employees AS E WHERE E.Id = @idEmployee);
+			DECLARE @job VARCHAR(50) = (SELECT ET.Job FROM dbo.EmployeeType AS ET WHERE ET.Id = @idEmployeeType);
+			DECLARE @salary MONEY = (SELECT ET.Salary FROM dbo.EmployeeType AS ET WHERE ET.Job = @job);
+			SELECT *,
+				   @job AS Job,
+				   @salary AS Salary
 
 			FROM dbo.Employees AS E
 			WHERE E.Title = @inEmployeeName;
@@ -1789,7 +1918,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewEmployeesPerSubsidiary]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewEmployeesPerSubsidiary]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1840,7 +1969,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewPaymentType]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewPaymentType]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1889,7 +2018,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewPrice]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewPrice]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1940,7 +2069,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewProduct]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewProduct]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2002,7 +2131,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewSchedule]    Script Date: 19/11/2021 07:00:38 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewSchedule]    Script Date: 21/11/2021 21:07:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

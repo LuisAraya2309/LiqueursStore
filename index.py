@@ -14,7 +14,7 @@ app = Flask(__name__)
 username =""
 api = "http://localhost:3001/"
 imageSrc = ""
-country="Argentina"
+country="Costa Rica"
 '''
 newRequest = api+'users'
 resp = requests.get(newRequest)
@@ -28,6 +28,10 @@ def login():
 
 @app.route('/signIn',methods=['GET','POST'])  #Sign in
 def validateUser():
+    
+    countrySelected = request.form['countrySelected']
+    global country
+    country = countrySelected
     user = request.form['user']
     password = request.form['password']
     
@@ -37,7 +41,7 @@ def validateUser():
             query = 'EXEC sp_SignIn ? , ? , ?'
             cursor.execute(query,(user,password,0))
             queryResult = cursor.fetchall()
-            interfaces = {'Consultant':'consultant.html'}
+            interfaces = {'Consultant':'consultant.html','Administrator':'admin.html'}
             validUser = queryResult[0][0]
             userType = queryResult[0][1]
 
@@ -316,19 +320,136 @@ def buyProduct():
         dbConnection.close()
         
     return str("Compra realizada")
-    
-    '''
-    @inSubsidiary VARCHAR(50),
-	@inUsername VARCHAR(50),
-	@inPrice MONEY,
-	@inDiscount MONEY,
-	@inBiller VARCHAR(50),
-	@inAddress VARCHAR(50),
-	@inProductName VARCHAR(50),
-	@inPaymentType VARCHAR(50),
-	@OutResultCode INT OUTPUT
-    '''
+
+
+@app.route('/returnAdmin',methods=['GET','POST'])
+def returnAdmin():
+    return render_template('admin.html')
         
+@app.route('/productStock',methods=['GET','POST'])
+def productStock():
+    productName = request.form['productName']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            query = 'EXEC sp_ProductStock ?, ?'
+            cursor.execute(query,(productName,0))
+            queryResult = cursor.fetchall()
+            subsidiaryStock=""
+            
+            for result in queryResult:
+                subsidiaryStock+=result[1]
+                subsidiaryStock+=": "
+                subsidiaryStock+=(str(result[0])+"\n")
+                
+            return  '''
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                                <link href="./static/css/admin.css" rel="stylesheet" />
+                                <title>Modificar Inventario</title>
+                            </head>
+                            <div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">'''+subsidiaryStock+'''
+                                    </div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/returnAdmin";
+                                        });
+                            </script>
+                            '''
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()  
+
+            
+@app.route('/editPrice',methods=['GET','POST'])
+def editPrice():
+    productName = request.form['productName']
+    newPrice = request.form['newPrice']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            query = 'EXEC sp_UpdatePrice ?, ?, ?'
+            cursor.execute(query,(newPrice,productName,0))
+            queryResult = cursor.fetchall()
+            resultCode = int(queryResult[0][0])
+            if resultCode == 0:
+                return  '''
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                                <link href="./static/css/admin.css" rel="stylesheet" />
+                                <title>Modificar Inventario</title>
+                            </head>
+                            <div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">'''+"Precio editado con éxito."+'''
+                                    </div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/returnAdmin";
+                                        });
+                            </script>
+                            '''
+                            
+            else:
+                '''
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                                <link href="./static/css/admin.css" rel="stylesheet" />
+                                <title>Modificar Inventario</title>
+                            </head>
+                            <div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">'''+"El producto a cambiar no existe."+'''
+                                    </div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/returnAdmin";
+                                        });
+                            </script>
+                            '''
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()  
+    
+    
+    
+    
+    
+
         
 
 def createReportsBattery():
