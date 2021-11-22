@@ -4,6 +4,28 @@
 body {
   font-size: 14px;
 }
+
+
+.reports{
+  position: absolute;
+  width: 143px;
+  height: 56px;
+  left: 729px;
+  top: 668px;
+  
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 56px;
+  
+  text-decoration-line: underline;
+  
+  color: #161412;
+  background-color: transparent;
+  border: 0ch;
+}
+
 .v1084_136 {
   width: 100%;
   height: 980px;

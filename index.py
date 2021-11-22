@@ -18,7 +18,7 @@ app = Flask(__name__)
 username =""
 api = "http://localhost:3001/"
 imageSrc = ""
-country="Costa Rica"
+country="Argentina"
 '''
 newRequest = api+'users'
 resp = requests.get(newRequest)
@@ -109,8 +109,6 @@ def showSchedules():
     finally:
         dbConnection.close()
 
-
-
         
 @app.route('/queryProduct',methods=['GET','POST'])
 def queryProduct():
@@ -143,20 +141,20 @@ def queryProduct():
             for result in nearestSubsidiares:
                 availablesSubs+=(str(result[0])+', ')
             availablesSubs = availablesSubs[:-2]+'.'
-                
-            
+
+
             #destiny =   str(os.path.realpath('temp.jpg')) 
             #return str(destiny)
             #os.startfile(destiny)
-            
+
             return render_template('productQuery.html',**locals())
-            
-            
+
+
 
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
-    
+
     finally:
         dbConnection.close()
         
@@ -547,8 +545,6 @@ def addNewProduct():
     finally:
         dbConnection.close()
 
-  
- 
 
 def saleXCountryDoc(listTransaction):
     document = Document()
@@ -562,7 +558,7 @@ def saleXCountryDoc(listTransaction):
 
 def saleXSubsidiaryDoc(listTransaction, subsidiary):
 
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading("La sucursal " + subsidiary + ' registró ' + str(len(listTransaction)) + ' venta(s)', level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -572,7 +568,7 @@ def saleXSubsidiaryDoc(listTransaction, subsidiary):
     document.save('Reporte de ventas.docx')
        
 def saleXSubsidiaryXProductsDoc(listTransaction, productTitle):
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(len(listTransaction)) + ' venta(s) del licor '+ productTitle, level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -582,7 +578,7 @@ def saleXSubsidiaryXProductsDoc(listTransaction, productTitle):
     document.save('Reporte de ventas.docx')      
 
 def saleXDateDoc(date, subsidiaryTitle, listTransaction):
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(subsidiaryTitle + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(date) , level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -592,7 +588,7 @@ def saleXDateDoc(date, subsidiaryTitle, listTransaction):
     document.save('Reporte de ventas.docx')    
 
 def saleXPaymentTypeDoc(listTransaction):
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) por medio de '+ str(listTransaction[0][4]), level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -602,7 +598,7 @@ def saleXPaymentTypeDoc(listTransaction):
     document.save('Reporte de ventas.docx')   
 
 def saleXDatexPaymentTypeDoc(listTransaction):
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading(str(listTransaction[0][0]) + ' registró '+str(len(listTransaction))+ ' venta(s) el día '+ str(listTransaction[0][1]) +' por medio de '+ str(listTransaction[0][4]), level=1)
     for transaction in listTransaction:
         document.add_paragraph("")
@@ -791,7 +787,7 @@ def mainBatteryReport():
     
     createSalesXCountry()
     
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_heading('Ventas por subsidiaria', 0)
     
     subsidiaryList = subsidiaryXCountry()        
@@ -801,16 +797,14 @@ def mainBatteryReport():
         
         createSalesXSubisidiary(subsidiary+1 , subsidiaryList[subsidiary] ) #This function creates the sales per subsidiary report
         productXSubsidiaryList = productsXSubsidiary(subsidiary+1)  
-        document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+        document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
         document.add_heading('Ventas por subsidiaria por producto', 0)
         for product in range(0,len(productXSubsidiaryList)):
             createSaleXSubsidiaryXProduct(product+1,subsidiary+1 ,productXSubsidiaryList[product])
-            
-#mainBatteryReport()     
 
 def saleXSubsidiaryXDateXPaymentType():
     
-    document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+    document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
     document.add_paragraph("")
     document.add_heading('Ventas por fecha y/o tipo de pago', 0)
     document.save('Reporte de ventas.docx')
@@ -826,47 +820,44 @@ def saleXSubsidiaryXDateXPaymentType():
                 createSalesXPaymentType(1, subsidiary)
                 createSalesXPaymentType(2, subsidiary)
                 newSubsidiary = False
-                
             createSalesXDate(date, subsidiary)
             for type in range(0,len(paymentTypeList)):    
                 createSalesXDateXPaymentType(date,type+1, subsidiary)
-                     
-#saleXSubsidiaryXDateXPaymentType()
 
 def bestSellerXCountry():
 
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
-            document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+            document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
             document.add_paragraph("")
             document.add_heading('Productos más/menos comprados', 0)
             bestSellerProduct = 'EXEC sp_titleProductTransaction  ?'
             cursor.execute(bestSellerProduct,(0))
             queryResult = cursor.fetchall()
             
-            productDict = {}
+            employeeDict = {}
             for item in  range(0,len(queryResult)):
-                if queryResult[item][0] not in productDict.keys():
-                    productDict[queryResult[item][0]] = 1
+                if queryResult[item][0] not in employeeDict.keys():
+                    employeeDict[queryResult[item][0]] = 1
                 else:
-                    productDict[queryResult[item][0]] += 1
-            productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
+                    employeeDict[queryResult[item][0]] += 1
+            employeeDict = sorted(employeeDict.items(), key=lambda x: x[1], reverse=True)
             
             
             document.add_heading('Los productos más vendidos en ' + country + ' son: ', 1)
             document.add_paragraph("")
             
-            document.add_paragraph(productDict[0][0])
-            document.add_paragraph(productDict[1][0])
-            document.add_paragraph(productDict[2][0])
+            document.add_paragraph(employeeDict[0][0])
+            document.add_paragraph(employeeDict[1][0])
+            document.add_paragraph(employeeDict[2][0])
             
             document.add_heading('Los productos menos vendidos en ' + country + ' son: ', 1)
             document.add_paragraph("")
             
-            document.add_paragraph(productDict[-1][0])
-            document.add_paragraph(productDict[-2][0])
-            document.add_paragraph(productDict[-3][0])
+            document.add_paragraph(employeeDict[-1][0])
+            document.add_paragraph(employeeDict[-2][0])
+            document.add_paragraph(employeeDict[-3][0])
             
             document.save('Reporte de ventas.docx')
                    
@@ -875,8 +866,6 @@ def bestSellerXCountry():
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
     finally:
         dbConnection.close()  
-          
-#bestSellerXCountry()
 
 def bestSellerXSubsidiary():
     subsidiaryList = subsidiaryXCountry()        
@@ -884,28 +873,28 @@ def bestSellerXSubsidiary():
         dbConnection = connectToDatabase(country)
         try:
             with dbConnection.cursor() as cursor:
-                document = Document('C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx')
+                document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
                 bestSellerProduct = 'EXEC sp_titleProductTransactionXSubsidiary ? ,  ?'
                 cursor.execute(bestSellerProduct,(subsidiary,0))
                 queryResult = cursor.fetchall()
                 
-                productDict = {}
+                employeeDict = {}
                 for item in  range(0,len(queryResult)):
-                    if queryResult[item][0] not in productDict.keys():
-                        productDict[queryResult[item][0]] = 1
+                    if queryResult[item][0] not in employeeDict.keys():
+                        employeeDict[queryResult[item][0]] = 1
                     else:
-                        productDict[queryResult[item][0]] += 1
-                productDict = sorted(productDict.items(), key=lambda x: x[1], reverse=True)
+                        employeeDict[queryResult[item][0]] += 1
+                employeeDict = sorted(employeeDict.items(), key=lambda x: x[1], reverse=True)
                 
                 document.add_heading('El producto más vendidos en ' + subsidiary + ' es: ', 1)
                 document.add_paragraph("")
                 
-                document.add_paragraph(productDict[0][0])
+                document.add_paragraph(employeeDict[0][0])
                 
                 document.add_heading('El producto menos vendido en ' + subsidiary + ' es: ', 1)
                 document.add_paragraph("")
                 
-                document.add_paragraph(productDict[-1][0])
+                document.add_paragraph(employeeDict[-1][0])
                 
                 document.save('Reporte de ventas.docx')
                 
@@ -917,11 +906,88 @@ def bestSellerXSubsidiary():
         finally:
             dbConnection.close()    
 
-#bestSellerXSubsidiary()
+def bestEmployeeXCountry():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
+            document.add_paragraph("")
+            document.add_heading('Reportes de Empleado', 0)
+            bestSellerProduct = 'EXEC sp_bestEmployee  ?'
+            cursor.execute(bestSellerProduct,(0))
+            queryResult = cursor.fetchall()
+            
+            employeeDict = {}
+            for item in  range(0,len(queryResult)):
+                if queryResult[item][0] not in employeeDict.keys():
+                    employeeDict[queryResult[item][0]] = 1
+                else:
+                    employeeDict[queryResult[item][0]] += 1
+            employeeDict = sorted(employeeDict.items(), key=lambda x: x[1], reverse=True)
+            
+            
+            document.add_heading('Los empleados que realizaron más ventas en ' + country + ' son: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(employeeDict[0][0])
+            document.add_paragraph(employeeDict[1][0])
+            document.add_paragraph(employeeDict[2][0])
+            
+            document.add_heading('Los empleados que realizaron menos ventas en ' + country + ' son: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(employeeDict[-1][0])
+            document.add_paragraph(employeeDict[-2][0])
+            document.add_paragraph(employeeDict[-3][0])
+            
+            document.save('Reporte de ventas.docx')
+                   
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()  
 
 @app.route('/complain',methods=['GET','POST'])
 def complain():
     return render_template('quejas.html')
+def bestEmployeeXSubsidiary():
+    subsidiaryList = subsidiaryXCountry()        
+    for subsidiary in subsidiaryList:
+        dbConnection = connectToDatabase(country)
+        try:
+            with dbConnection.cursor() as cursor:
+                document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
+                bestSellerProduct = 'EXEC sp_bestEmployeeXSubsidiary ? ,  ?'
+                cursor.execute(bestSellerProduct,(subsidiary,0))
+                queryResult = cursor.fetchall()
+                
+                employeeDict = {}
+                for item in  range(0,len(queryResult)):
+                    if queryResult[item][0] not in employeeDict.keys():
+                        employeeDict[queryResult[item][0]] = 1
+                    else:
+                        employeeDict[queryResult[item][0]] += 1
+                employeeDict = sorted(employeeDict.items(), key=lambda x: x[1], reverse=True)
+                document.add_heading('El empleado que realizo más ventas en ' + subsidiary + ' es: ', 1)
+                document.add_paragraph("")
+                
+                document.add_paragraph(employeeDict[0][0])
+                
+                document.add_heading('El empleado que realizo menos ventas en ' + subsidiary + ' es: ', 1)
+                document.add_paragraph("")
+                
+                document.add_paragraph(employeeDict[-1][0])
+                
+                document.save('Reporte de ventas.docx')
+                
+                
+                    
+        except Exception as e:
+            print(e)
+            return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        finally:
+            dbConnection.close()   
 
 @app.route('/doComplain',methods=['GET','POST'])
 def doComplain():
@@ -966,6 +1032,41 @@ def doComplain():
 @app.route('/beginSignUp',methods=['GET','POST'])
 def signUp():
     return render_template('signUp.html')
+@app.route('/createReport',methods=['GET','POST'])
+def createReport():
+    mainBatteryReport()
+    saleXSubsidiaryXDateXPaymentType()
+    bestSellerXCountry()
+    bestSellerXSubsidiary()
+    bestEmployeeXCountry()
+    bestEmployeeXSubsidiary()
+    return '''
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                        <link href="./static/css/admin.css" rel="stylesheet" />
+                        <title>Modificar Inventario</title>
+                    </head>
+                    <div class="window-notice" id="window-notice" >
+                        <div class="content">
+                            <div class="content-text">Documento de reportes creado con exito.
+                            </div>
+                            <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                        </div>
+                    </div>
+                    <script>
+                                let close_button = document.getElementById('close-button');
+                                    close_button.addEventListener("click", function(e) {
+                                    e.preventDefault();
+                                    document.getElementById("window-notice").style.display = "none";
+                                    window.location.href="/returnAdmin";
+                                });
+                    </script>
+                    '''
+    
+#'C:/Users/luist/OneDrive/Escritorio/LiqueursStore/Reporte de ventas.docx'
+#'C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx'
 
 #Run application
 if __name__ == '__main__':

@@ -145,20 +145,21 @@ body {
   text-align: left;
 }
 .v1148_171 {
-  width: 257px;
+  width: 400px;
   color: rgba(22,20,18,1);
   position: absolute;
-  top: 683px;
-  left: 997px;
+  top: 691px;
+  left: 835px;
   font-family: Abel;
   font-weight: Regular;
-  font-size: 36px;
+  font-size: 48px;
   opacity: 1;
   text-align: left;
   text-decoration: underline;
   background-color: transparent;
   border: 0ch;
 }
+
 .v1151_140 {
   width: 254px;
   height: 49px;
@@ -254,10 +255,12 @@ body {
   font-weight: Regular;
   font-size: 18px;
   position: absolute;
-  top: 698px;
-  left: 614px;
+  top: 528px;
+  left: 1337px;
   border: 0px solid rgba(150,150,150,1);
 }
+
+
 .v1151_148 {
   width: 254px;
   height: 49px;
@@ -323,14 +326,15 @@ body {
   width: 122px;
   color: rgba(22,20,18,1);
   position: absolute;
-  top: 623px;
-  left: 614px;
+  top: 450px;
+  left: 1337px;
   font-family: Abel;
   font-weight: Regular;
   font-size: 36px;
   opacity: 1;
   text-align: left;
 }
+
 .v1151_155 {
   width: 87px;
   color: rgba(22,20,18,1);
@@ -368,6 +372,38 @@ body {
   text-align: left;
 }
 
+.etiquetaComida{
+
+  position: absolute;
+  width: 118px;
+  height: 56px;
+  left: 1331px;
+  top: 281px;
+
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 56px;
+
+  color: #161412;
+
+}
+
+.inputComida{
+
+  position: absolute;
+  width: 254px;
+  height: 49px;
+  left: 1331px;
+  top: 364px;
+  background: rgba(244,244,242,1);
+  opacity: 1;
+  font-family: Abel;
+  font-weight: Regular;
+  font-size: 18px;
+  border: 0px solid rgba(150,150,150,1);
+}
 
 
 .window-notice {
