@@ -893,8 +893,14 @@ def bestSellerXSubsidiary():
 
 #bestSellerXSubsidiary()
 
+@app.route('/complain',methods=['GET','POST'])
+def complain():
+    return render_template('quejas.html')
 
-
+@app.route('/doComplain',methods=['GET','POST'])
+def doComplain():
+    
+    return str('Empezar queja')
 
 #Run application
 if __name__ == '__main__':

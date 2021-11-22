@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre+Medium&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
+        <link href="{{ url_for('static',filename='css/quejas.css') }}" rel="stylesheet" />
+        <title>Complains</title
+    ></head>
+<body>
+    <div class="v1167_141">
+    <div class="v1167_142"></div>
+    <div class="v1167_143"></div>
+    <span class="v1167_144">TB </span>
+    <span class="v1167_145">tienda bunbury.</span>
+    <div class="v1167_147"></div>
+    <div class="v1167_148"></div>
+    <div class="v1167_149"></div>
+    <div class="v1167_150"></div>
+    <div class="v1167_151"></div>
+    <span class="v1167_152">Buzón de quejas</span>
+    <form action = "/doComplain">
+    <input type="text"  class="v1167_154" name="subsidiary"/>
+    <input type ="text" class="v1170_143">
+    <select class="v1167_155" name="typeOf">
+        <option value="suggestion">Recomendación</option>
+        <option value="complain">Queja</option>  
+    </select>
+    <textarea type="text" class="v1170_141"></textarea>
+    <span class="v1167_162">Subsidiaria</span>
+    <span class="v1170_142">Empleado</span>
+    <span class="v1167_164">Tipo de queja</span>
+    <span class="v1170_140">Recomendación</span>
+    <div class="v1170_147"></div>
+    <div class="v1170_149">
+        <input type="submit" class="v1170_150" value="Enviar"></input>
+    </form>
+    </div></div>
+</body>
+</html>
