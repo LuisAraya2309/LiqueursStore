@@ -6,6 +6,7 @@ from databaseConnection import *
 from auxiliarFunctions import *
 import json ,requests, os,random
 import shutil
+from geopy.geocoders import Nominatim 
 
 from pymongo import MongoClient
 from docx import Document
@@ -507,8 +508,7 @@ def addNewProduct():
                 return render_template('addProduct.html')+ '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
                                     <div class="content-text">El producto fue ingresado con exito.
-                                    <a href="/beginSignUp">Registrarse</a></div>
-                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                    <div class="content-buttons"><a href="/returnAdmin" id="close-button">Aceptar</a></div>
                                 </div>
                             </div>
                             <script>
@@ -524,8 +524,7 @@ def addNewProduct():
                 return render_template('addProduct.html') + '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
                                     <div class="content-text">Error al insertar el producto. Vuelva a intentarlo.
-                                    <a href="/beginSignUp">Registrarse</a></div>
-                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                    <div class="content-buttons"><a href="/returnAdmin" id="close-button">Aceptar</a></div>
                                 </div>
                             </div>
                             <script>
@@ -533,7 +532,7 @@ def addNewProduct():
                                             close_button.addEventListener("click", function(e) {
                                             e.preventDefault();
                                             document.getElementById("window-notice").style.display = "none";
-                                            window.location.href="/";
+                                            window.location.href="/returnAdmin";
                                         });
                             </script>
                             '''
@@ -831,7 +830,6 @@ def bestSellerXCountry():
         with dbConnection.cursor() as cursor:
             document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
             document.add_paragraph("")
-            document.add_heading('Productos más/menos comprados', 0)
             bestSellerProduct = 'EXEC sp_titleProductTransaction  ?'
             cursor.execute(bestSellerProduct,(0))
             queryResult = cursor.fetchall()
@@ -948,6 +946,53 @@ def bestEmployeeXCountry():
     finally:
         dbConnection.close()  
 
+def bestSellerGlobal():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
+            document.add_paragraph("")
+            document.add_heading('Productos más/menos comprados', 0)
+            bestSellerProduct = 'EXEC sp_BestSold  ?'
+            cursor.execute(bestSellerProduct,(0))
+            queryResult = cursor.fetchall()
+            
+            document.add_heading('El producto más vendido globalmente es: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(queryResult[0][0])
+            
+            document.save('Reporte de ventas.docx')
+                   
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()  
+
+def worstSellerGlobal():
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            document = Document('C:/Users/Sebastian/Desktop/TEC/IVSemestre/BasesDatosII/Proyecto/LiqueursStore/Reporte de ventas.docx')
+            document.add_paragraph("")
+            bestSellerProduct = 'EXEC sp_WorstSold  ?'
+            cursor.execute(bestSellerProduct,(0))
+            queryResult = cursor.fetchall()
+            
+            document.add_heading('El producto menos vendido globalmente es: ', 1)
+            document.add_paragraph("")
+            
+            document.add_paragraph(queryResult[0][0])
+            
+            document.save('Reporte de ventas.docx')
+                   
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    finally:
+        dbConnection.close()
+        
 @app.route('/complain',methods=['GET','POST'])
 def complain():
     return render_template('quejas.html')
@@ -1032,14 +1077,68 @@ def doComplain():
 @app.route('/beginSignUp',methods=['GET','POST'])
 def signUp():
     return render_template('signUp.html')
+
+@app.route('/ValidateSignUp',methods=['GET','POST'])
+def validateSignUp():
+    username = request.form['Username']
+    keyword = request.form['Keyword']
+    fullname = request.form['Name']
+    email = request.form['Email']
+    phone = request.form['Phone']
+    age = request.form['Age']
+    country = request.form['countrySelected']
+    
+    loc = Nominatim(user_agent="GetLoc") 
+    getLocation = loc.geocode(request.form['Address'])
+    
+    address = str(getLocation.latitude) + ' ' +str(getLocation.longitude)
+    address = 'POINT(' + address + ')'
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            bestSellerProduct = 'EXEC sp_SignUp ? , ?, ? , ?, ? , ?, ? , ?, ?'
+            cursor.execute(bestSellerProduct,(fullname,email,phone,address,age,username,keyword,'Consultant',0))
+            queryResult = cursor.fetchall()
+            validUser = queryResult[0][0]
+
+            if validUser != 1:
+                return render_template('login.html')
+            else:
+                return render_template('signUp.html') + '''<div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">El nombre de usuario ya existe. Vuelva a ingresar uno nuevo.
+                                    <a href="/">Registrarse</a></div>
+                                    <div class="content-buttons"><a href="/" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/";
+                                        });
+                            </script>
+                            '''
+            
+    except Exception as e:
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()  
+    
+
 @app.route('/createReport',methods=['GET','POST'])
 def createReport():
     mainBatteryReport()
     saleXSubsidiaryXDateXPaymentType()
+    bestSellerGlobal()
+    worstSellerGlobal()
     bestSellerXCountry()
     bestSellerXSubsidiary()
     bestEmployeeXCountry()
     bestEmployeeXSubsidiary()
+   
     return '''
                 <!DOCTYPE html>
                 <html>
