@@ -1087,7 +1087,6 @@ def validateSignUp():
     phone = request.form['Phone']
     age = request.form['Age']
     country = request.form['countrySelected']
-    
     loc = Nominatim(user_agent="GetLoc") 
     getLocation = loc.geocode(request.form['Address'])
     

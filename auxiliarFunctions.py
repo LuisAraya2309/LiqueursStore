@@ -66,4 +66,3 @@ def testTransactions(country):
             
     print('Finished')
     
-testTransactions('Colombia')
