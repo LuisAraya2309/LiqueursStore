@@ -368,48 +368,48 @@ EXEC sp_AddEmployee 'Mendoza','Auxiliar','Michael DeSanta Lopez','michaeldl@gmai
 DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 --Baileys
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,35,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,37,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irland','27',20,48,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,35,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,37,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irland','27',20,48,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --Jack Daniels
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,300,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,275,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,400,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,300,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,275,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,400,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 --Bacardi
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,500,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,600,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,456,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,500,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,600,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,456,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --------------
 --Legui
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\legui.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,780,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,700,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,720,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,780,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,700,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,720,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --Absolute
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\absolute.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,200,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,470,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,300,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,200,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,470,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,300,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 --JB
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jb.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,500,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,300,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,400,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,500,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,300,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,400,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --Buchanans
 SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\buchanans.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,800,'BuenosAires' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,760,'Rosario' ,'leonardo19',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,300,'Mendoza' ,'leonardo19',@imagenProducto,0
+EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,800,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,760,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,300,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 /*

@@ -331,31 +331,31 @@ INSERT INTO dbo.Schedules
 --Insertar empleados
 DECLARE @imagenEmpleado VARBINARY(MAX);
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\mariana.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\mariana.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Bogota','Gerente','Mariana Gonzales Tenorio','marianagt@gmail.com',98546712,32,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jeronimo.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jeronimo.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Medellin','Gerente','Jeronimo Lopez Mata','jeronimolm@gmail.com',90876512,35,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\emmanuel.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\emmanuel.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Cali','Gerente','Emmanuel Mendez Martinez','emmanuelmm@gmail.com',95763267,40,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\mario.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\mario.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Bogota','Cajero','Mario Parra Guevara','mariopg@gmail.com',91873256,43,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\German.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\German.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Medellin','Cajero','German Carrillo Parra','germancp@gmail.com',78321872,47,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\raul2.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\raul2.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Cali','Cajero','Raul Alvarez Garcia','rauraulaglag@gmail.com',67548912,23,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\Salome.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\Salome.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Bogota','Auxiliar','Salome Ortiz Moreira','salomeom@gmail.com',80547832,40,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\saray2.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\saray2.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Medellin','Auxiliar','Saray Fuentes Gonzalez','sarayfg@gmail.com',80328954,43,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\raquel2.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\raquel2.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Cali','Auxiliar','Raquel Diaz Moreira','raqueldm@gmail.com',78654312,28,@imagenEmpleado,0
 
 
@@ -363,63 +363,63 @@ EXEC sp_AddEmployee 'Cali','Auxiliar','Raquel Diaz Moreira','raqueldm@gmail.com'
 
 --INSERTAR LICORES--------------------------------------------------------------------------------------------------------
 
-DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 --Baileys
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\hechicera.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,18,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,12,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,13,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\hechicera.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,18,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,12,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion 100% en Barranquilla','Ron La Hechicera','Colombia','66',21,13,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 --Jack Daniels
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\milDemonios.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,5,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,6,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,7,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\milDemonios.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,5,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,6,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Aguardiente Mil Demonios','Colombia','153',30,7,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 
 --Bacardi
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,120,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,102,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,140,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,120,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,102,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','10',5,140,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 --Cortez
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\cortez.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,200,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,150,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,50,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,200,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,150,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Liviano aromatizado','Cortez','Cubano','7',1,50,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 --DonJulio
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\donJulio.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,20,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,17,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,12,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,20,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,17,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maduracion a 30 años','Don Julio','México','150',30,12,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 
 
 --Johnnie Walker
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\johnnieWBL.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,50,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,60,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,30,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,50,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,60,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Maderizado con roble','Johnnie Walker Black Label','Escocia','40',12,30,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 --Smirnoff Vodka
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\parce.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,2,'Bogota' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,6,'Medellin' ,'luciGa',@imagenProducto,0
-EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,10,'Cali' ,'luciGa',@imagenProducto,0
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\parce.jpg',SINGLE_BLOB) AS Imagen);
+EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,2,'Bogota' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,6,'Medellin' ,'luciGa',@imagenProducto,NULL,0
+EXEC sp_AddNewProduct 'Caña de azucar fermentada','Ron Parce','Colombia','223',12,10,'Cali' ,'luciGa',@imagenProducto,NULL,0
 
 
 /*
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\smirnoffV.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\johnnieWBL.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\donJulio.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\cortez.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg'
-'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\smirnoffV.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg'
+'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg'
 */
-
+--C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------
