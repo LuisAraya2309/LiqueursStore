@@ -35,7 +35,7 @@
                     <span class="v1084_172">Nombre</span>
                     <input type = "submit" class="v1084_173" value = "Actualizar precio"></input>
                     <span class="v1084_170">Nuevo precio</span>
-                    <input class="v1084_168" type="text"  id="productName" name="productName" pattern = "^[0-9]*"></input>
+                    <input class="v1084_168" type="text"  id="productName" name="productName"  pattern = "^[0-9]*" required></input>
                     <select class="v1084_174" id="newPrice" name="newPrice">
                         {% for product in products%}
                             <option>{{product}}</option>
@@ -53,7 +53,7 @@
                     <span class="v1084_172N">Nombre</span>
                     <input type = "submit" class="v1084_173N" value = "Aumentar stock"></input>
                     <span class="v1084_170N">Cantidad a agregar</span>
-                    <input class="v1084_168N" type="text"  id="stock" name="stock" pattern = "^[0-9]*"></input>
+                    <input class="v1084_168N" type="text"  id="stock" name="stock" pattern = "^[0-9]*" required></input>
                     <select class="v1084_174N" id="product" name="product">
                         {% for product in products%}
                             <option>{{product}}</option>

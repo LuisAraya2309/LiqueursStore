@@ -11,11 +11,13 @@
                 <span class="v1192_144">tb.</span>
                 <div class="v986_108"></div>
                 <div class="v986_109"></div>    
-                <input class="v1192_149" id = "Age" name = "Age"></input>
+                
+                <input type="date" id = "idAge" name="Age" class="v1192_149" placeholder="Ingrese su fecha de nacimiento" required>
+                
                 <span class="v986_110">Nombre de usuario</span>
                 <span class="v1192_145">Email</span>
                 <span class="v1192_147">Teléfono</span>
-                <span class="v1192_150">Edad</span>
+                <span class="v1192_150">Fecha de nacimiento</span>
                 <span class="v986_111">Contraseña</span>
                 <span class="v986_112">Nombre completo</span>
                 <span class="v986_113">Dirección</span>
@@ -26,13 +28,13 @@
                 <input type = "Submit" class="v986_120" value = "Crear cuenta"></input>
                 <input class="v986_121" id = "Keyword" name = "Keyword" required = "" 
                     pattern = "(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$+=`~?><#%&*!¡\-_]){1})\S{6,}" ></input>
-                <input class="v986_122" id = "Name" name = "Name"></input>
-                <input class="v986_123" id = "Address" name = "Address" ></input>
-                <input class="v986_124" id = "Username" name = "Username"></input>
-                <input class="v1192_146" id = "Email" name = "Email"></input>
-                <input class="v1192_148" id = "Phone" name = "Phone"></input>
+                <input class="v986_122" id = "Name" name = "Name" required></input>
+                <input class="v986_123" id = "Address" name = "Address" required></input>
+                <input class="v986_124" id = "Username" name = "Username" required></input>
+                <input class="v1192_146" id = "Email" name = "Email" required="" pattern = "^[^@]+@[^@]+\.[a-zA-Z]{2,}$" ></input>
+                <input class="v1192_148" id = "Phone" name = "Phone" required></input>
                 <div class="v1192_151"></div>
-                <select class="selectPais" aria-label="Default select example" id = "countrySelected" name="countrySelected">
+                <select class="selectPais" aria-label="Default select example" id = "countrySelected" name="countrySelected" required>
                     <option selected>Seleccione un país</option>
                     <option value="Costa Rica">Costa Rica</option>
                     <option value="Colombia">Colombia</option>

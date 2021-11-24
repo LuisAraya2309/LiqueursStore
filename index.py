@@ -7,6 +7,7 @@ from auxiliarFunctions import *
 import json ,requests, os,random
 import shutil
 from geopy.geocoders import Nominatim 
+import datetime
 
 from pymongo import MongoClient
 from docx import Document
@@ -173,10 +174,15 @@ def queryProduct():
             distance = int(nearestSubsidiares[0][2])
             distance = str(distance/1000)[:-1]
             nearestSub+=(" a solamente " + str(distance))
+            subsAvailableList = subsAvailable(productName,country)
             availablesSubs = "Disponible en: "
-            for result in nearestSubsidiares:
-                availablesSubs+=(str(result[0])+', ')
-            availablesSubs = availablesSubs[:-2]+'.'
+            
+            if len(subsAvailableList) != 1:
+                for result in subsAvailableList:
+                    availablesSubs+=(result + ', ')
+                availablesSubs = availablesSubs[:-2]+'.'
+            else:
+                availablesSubs += subsAvailableList[0] + '.'
 
 
             #destiny =   str(os.path.realpath('temp.jpg')) 
@@ -1288,50 +1294,84 @@ def validateSignUp():
     loc = Nominatim(user_agent="GetLoc") 
     getLocation = loc.geocode(request.form['Address'])
     
-    address = str(getLocation.latitude) + ' ' +str(getLocation.longitude)
-    address = 'POINT(' + address + ')'
-    dbConnection = connectToDatabase(country)
-    try:
-        with dbConnection.cursor() as cursor:
-            bestSellerProduct = 'EXEC sp_SignUp ? , ?, ? , ?, ? , ?, ? , ?, ?'
-            cursor.execute(bestSellerProduct,(fullname,email,phone,address,age,username,keyword,'Consultant',0))
-            queryResult = cursor.fetchall()
-            validUser = queryResult[0][0]
+    currentDateTime = datetime.datetime.now()
+    date = currentDateTime.date()
+    year = date.strftime("%Y")
+    
+    years= age.split("-")
+    ageUser = int(year) - int(years[0]) 
+    
+    if ageUser>= 18:
+        address = str(getLocation.latitude) + ' ' +str(getLocation.longitude)
+        address = 'POINT(' + address + ')'
+        dbConnection = connectToDatabase(country)
+        try:
+            with dbConnection.cursor() as cursor:
+                bestSellerProduct = 'EXEC sp_SignUp ? , ?, ? , ?, ? , ?, ? , ?, ?'
+                cursor.execute(bestSellerProduct,(fullname,email,phone,address,ageUser,username,keyword,'Consultant',0))
+                queryResult = cursor.fetchall()
+                validUser = queryResult[0][0]
 
-            if validUser != 1:
-                return render_template('login.html')
-            else:
-                return '''
-                <!DOCTYPE html>
-                <html>
-                    <head>
-                        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-                        <link href="./static/css/admin.css" rel="stylesheet" />
-                        <title>Modificar Inventario</title>
-                    </head>
-                    <div class="window-notice" id="window-notice" >
-                        <div class="content">
-                            <div class="content-text">El nombre de usuario ya existe. Ingrese uno nuevo
+                if validUser != 1:
+                    return render_template('login.html')
+                else:
+                    return '''
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                            <link href="./static/css/admin.css" rel="stylesheet" />
+                            <title>Modificar Inventario</title>
+                        </head>
+                        <div class="window-notice" id="window-notice" >
+                            <div class="content">
+                                <div class="content-text">El nombre de usuario ya existe. Ingrese uno nuevo
+                                </div>
+                                <div class="content-buttons"><a href="/beginSignUp" id="close-button">Aceptar</a></div>
                             </div>
-                            <div class="content-buttons"><a href="/beginSignUp" id="close-button">Aceptar</a></div>
                         </div>
-                    </div>
-                    <script>
-                                let close_button = document.getElementById('close-button');
-                                    close_button.addEventListener("click", function(e) {
-                                    e.preventDefault();
-                                    document.getElementById("window-notice").style.display = "none";
-                                    window.location.href="/beginSignUp";
-                                });
-                    </script>
-                    '''
-            
-    except Exception as e:
-        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
-    
-    finally:
-        dbConnection.close()  
-    
+                        <script>
+                                    let close_button = document.getElementById('close-button');
+                                        close_button.addEventListener("click", function(e) {
+                                        e.preventDefault();
+                                        document.getElementById("window-notice").style.display = "none";
+                                        window.location.href="/beginSignUp";
+                                    });
+                        </script>
+                        '''
+                
+        except Exception as e:
+            return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        
+        finally:
+            dbConnection.close()  
+        
+    else:
+         return '''
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                            <link href="./static/css/admin.css" rel="stylesheet" />
+                            <title>Modificar Inventario</title>
+                        </head>
+                        <div class="window-notice" id="window-notice" >
+                            <div class="content">
+                                <div class="content-text">La edad no cumple con la normativa de la tienda.
+                                </div>
+                                <div class="content-buttons"><a href="/beginSignUp" id="close-button">Aceptar</a></div>
+                            </div>
+                        </div>
+                        <script>
+                                    let close_button = document.getElementById('close-button');
+                                        close_button.addEventListener("click", function(e) {
+                                        e.preventDefault();
+                                        document.getElementById("window-notice").style.display = "none";
+                                        window.location.href="/beginSignUp";
+                                    });
+                        </script>
+                        '''
+        
 
 @app.route('/createReport',methods=['GET','POST'])
 def createReport():

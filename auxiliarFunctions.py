@@ -3,7 +3,58 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 import random
+
+
+def returnSubsidiaries(country):
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+            return subsidiaries
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+
+
+
+def subsAvailable(productName,country):
+    
+    subsidiaries = returnSubsidiaries(country)
+    subsAvailableList = []
+    for subsidiary in subsidiaries:
+        dbConnection = connectToDatabase(country)
+        try:
+            with dbConnection.cursor() as cursor:
+                query = 'EXEC sp_productInSubsidiary ? , ? , ?'
+                cursor.execute(query,(subsidiary,productName,0))
+                queryResult = cursor.fetchall()
+                if queryResult[0][1] == 0:
+                    subsAvailableList+=[subsidiary]
+
+        except Exception as e:
+            print(e)
+            return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+        
+        finally:
+            dbConnection.close()
+    return subsAvailableList
+
+
+
+
+
+
 def subsidiariesNear(username,productName,country):
+    
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
