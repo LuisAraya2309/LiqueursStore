@@ -303,3 +303,24 @@
     background: #FFFFFF;
 
 }
+
+.inputQueja{
+
+  position: absolute;
+  width: 344px;
+  height: 56px;
+  left: 657px;
+  top: 764px;
+
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 56px;
+
+  text-decoration-line: underline;
+  border: 0ch;
+  background-color: transparent;
+  color: #161412;
+
+}

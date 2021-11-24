@@ -24,20 +24,37 @@
                 <form class = "form1" method = "post" action="/queryProduct">
                     <input type = "submit" class="v989_100" value = "Productos"></input>
                     <span class="v991_92">Nombre</span>
-                    <input class="v991_101" type="text"  id="productName" name="productName"></input>
+                    <select class="v991_101" id="productName" name="productName">
+                        {% for product in products%}
+                            <option>{{product}}</option>
+                        {% endfor%}
+                    </select>
                 </form>
 
                 <form class = "form2" method = "post" action="/subSchedules">
                     <input  type = "submit" class="v990_183" value = "Horarios"></input>
                     <span class="v991_99">Sucursal</span>
-                    <input class="v991_129" type="text"  id="subsidiary" name="subsidiary"></input>
+                    <select class="v991_129" id="subsidiary" name="subsidiary">
+                        {% for subsidiary in subsidiaries%}
+                            <option>{{subsidiary}}</option>
+                        {% endfor%}
+                    </select>
                 </form>
 
                 <form class = "form3" method = "post" action="/listEmployees">
                     <input type = "submit" class="v990_184" value = "Empleados"></input>
                     <span class="v991_100">Sucursal</span>
-                    <input class="v991_130" type="text"  id="subsidiaryEmployees" name="subsidiaryEmployees"></input>
+                    <select class="v991_130" id="subsidiaryEmployees" name="subsidiaryEmployees">
+                        {% for subsidiary in subsidiaries%}
+                            <option>{{subsidiary}}</option>
+                        {% endfor%}
+                    </select>
                 </form>
+
+                <form action = "/complain">
+                    <input type = "submit" class="inputQueja" value = "Realizar recomendación"></input>
+                </form>
+                
             </div>
         </body>
     </html>

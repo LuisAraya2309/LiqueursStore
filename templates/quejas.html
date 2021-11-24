@@ -19,7 +19,11 @@
     <div class="v1167_151"></div>
     <span class="v1167_152">Buzón de quejas</span>
     <form action = "/doComplain" method="post">
-        <input type="text"  class="v1167_154" name="subsidiary"/>
+        <select class="v1167_154" id="subsidiary" name="subsidiary">
+            {% for subsidiary in subsidiaries%}
+                <option>{{subsidiary}}</option>
+            {% endfor%}
+        </select>
         <input type ="text" class="v1170_143" name= "employee">
         <select class="v1167_155" name="typeOf">
             <option value="Recomendación">Recomendación</option>

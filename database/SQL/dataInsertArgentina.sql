@@ -331,93 +331,91 @@ INSERT INTO dbo.Schedules
 --Insertar empleados
 DECLARE @imagenEmpleado VARBINARY(MAX);
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\diego.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\diego.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'BuenosAires','Gerente','Diego Gutierrez Molina','diegogm@gmail.com',64039278,30,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\monica.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\monica.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Rosario','Gerente','Monica Alfaro Parrales','monicaap211@gmail.com',20495638,37,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\roberto.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\roberto.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Mendoza','Gerente','Roberto Vega Morales','robertovm@gmail.com',92049502,42,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\gabriel.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\gabriel.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'BuenosAires','Cajero','Gabriel Vega Obando','gabrielvo@gmail.com',29404434,41,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\roger.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\roger.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Rosario','Cajero','Roger Araya Leiton','rogeral@gmail.com',92047560,50,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\olga.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\olga.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Mendoza','Cajero','Olga Guzman Camacho','olgagc@gmail.com',99230246,24,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\paula.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\paula.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'BuenosAires','Auxiliar','Paula Vega Obando','paulavo@gmail.com',84302339,29,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\justin.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\justin.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Rosario','Auxiliar','Justin Torres Mendez','justintm@gmail.com',92220384,22,@imagenEmpleado,0
 
-SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\michael.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\michael.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Mendoza','Auxiliar','Michael DeSanta Lopez','michaeldl@gmail.com',83205044,27,@imagenEmpleado,0
-
-
 
 
 --INSERTAR LICORES--------------------------------------------------------------------------------------------------------
 --Insertar productos en Argentina
-DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+DECLARE @imagenProducto VARBINARY(MAX);-- = (SELECT BulkColumn FROM OPENROWSET(BULK ''C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 --Baileys
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,35,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irlanda','27',20,37,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Aromatizado con canela','Baileys','Irland','27',20,48,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --Jack Daniels
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,300,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,275,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Aromatizado con cipres','Jack Daniels Standard Edition','Estados Unidos','35',10,400,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 --Bacardi
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,500,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,600,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Con madera de abeto','Bacardí Blanco','Cuba','12',5,456,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --------------
 --Legui
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\legui.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\legui.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,780,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,700,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Liviano aromatizado con mate','Legui','Argentina','15',1,720,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
---Absolute
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\absolute.jpg',SINGLE_BLOB) AS Imagen);
+--Absolut
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\absolute.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,200,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,470,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Enfriado en Leningrado','Absolute','Rusia','170',30,300,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 --JB
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jb.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jb.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,500,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,300,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Refrigerado en Sicilia','JB','Italia','20',12,400,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 --Buchanans
-SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\buchanans.jpg',SINGLE_BLOB) AS Imagen);
+SET @imagenProducto= (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\buchanans.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,800,'BuenosAires' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,760,'Rosario' ,'leonardo19',@imagenProducto,NULL,0
 EXEC sp_AddNewProduct 'Maderizado con abeto','Buchanans','Escocia','200',3,300,'Mendoza' ,'leonardo19',@imagenProducto,NULL,0
 
 
 /*
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\smirnoffV.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\johnnieWBL.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\donJulio.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\cortez.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\bacardi.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\jackDaniels.jpg'
-'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\baileys.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\smirnoffV.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\johnnieWBL.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\donJulio.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\cortez.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\bacardi.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\jackDaniels.jpg'
+'C:\Users\Sebastian\Desktop\TEC\IVSemestre\BasesDatosII\Proyecto\LiqueursStore\static\images\baileys.jpg'
 */
 
 

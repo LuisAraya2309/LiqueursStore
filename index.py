@@ -40,6 +40,41 @@ def validateUser():
     user = request.form['user']
     password = request.form['password']
     
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    #Get Products
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            queryLiqueurs = 'SELECT L.Title FROM dbo.Liqueurs AS L'
+            cursor.execute(queryLiqueurs)
+            queryResult = cursor.fetchall()
+            products = []
+            for product in queryResult:
+                products.append(product[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()  
+    
+    
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
@@ -53,7 +88,7 @@ def validateUser():
             if validUser != 1:
                 global username
                 username = user
-                return render_template(interfaces[userType])
+                return render_template(interfaces[userType],**locals())
             else:
                 return render_template('login.html') + '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
@@ -159,7 +194,78 @@ def queryProduct():
     finally:
         dbConnection.close()
         
-        
+
+@app.route('/changeStock',methods=['GET','POST'])
+def changeStock():
+    subsidiary = request.form['subsidiary']
+    product = request.form['product']
+    stock = request.form['stock']
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            query = 'EXEC sp_UpdateStock ? , ?, ?, ?'
+            cursor.execute(query,(product,stock,subsidiary,0))
+            queryResult = cursor.fetchall()
+            resultCode = int(queryResult[0][0])
+            if resultCode == 0:
+                return  '''
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                                <link href="./static/css/admin.css" rel="stylesheet" />
+                                <title>Ventana emergente</title>
+                            </head>
+                            <div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">El stock se ha aumentando correctamente</div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/returnAdmin";
+                                        });
+                            </script>
+                            '''
+                            
+            else:
+                '''
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                                <link href="./static/css/admin.css" rel="stylesheet" />
+                                <title>Modificar Inventario</title>
+                            </head>
+                            <div class="window-notice" id="window-notice" >
+                                <div class="content">
+                                    <div class="content-text">'''+"El producto a cambiar no existe."+'''
+                                    </div>
+                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                </div>
+                            </div>
+                            <script>
+                                        let close_button = document.getElementById('close-button');
+                                            close_button.addEventListener("click", function(e) {
+                                            e.preventDefault();
+                                            document.getElementById("window-notice").style.display = "none";
+                                            window.location.href="/returnAdmin";
+                                        });
+                            </script>
+                            '''
+            
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+    
+    finally:
+        dbConnection.close()  
+
+     
         
 @app.route('/listEmployees',methods=['GET','POST'])
 def listEmployees():
@@ -216,9 +322,6 @@ def showEmployee():
     finally:
         dbConnection.close()
     
-       
-
-
 
 @app.route('/startShopping',methods=['GET','POST'])
 def startShopping():
@@ -315,16 +418,14 @@ def buyProduct():
         with dbConnection.cursor() as cursor:
             querySubisidiary = 'EXEC sp_buyProduct ?, ?, ?, ?, ?, ?, ?, ?, ?'
             cursor.execute(querySubisidiary,(subsidiary,userName,price, discount, biller,address,productName,paymentType,0))
-            
-            
-
+                
     except Exception as e:
         print(e)
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
 
     finally:
         dbConnection.close()
-    
+        
     dbConnection = connectToDatabase(country)
     try:
         with dbConnection.cursor() as cursor:
@@ -343,13 +444,71 @@ def buyProduct():
     finally:
         dbConnection.close()  
     
-        
-    return str("Compra realizada")
+    return  '''
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                    <link href="./static/css/admin.css" rel="stylesheet" />
+                    <title>Mensaje emergente</title>
+                </head>
+                <div class="window-notice" id="window-notice" >
+                    <div class="content">
+                        <div class="content-text">Compra realizada con exito</div>
+                        <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                    </div>
+                </div>
+                <script>
+                            let close_button = document.getElementById('close-button');
+                                close_button.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                document.getElementById("window-notice").style.display = "none";
+                                window.location.href="#";
+                            });
+                </script>
+                '''    
+    
+    
+    
 
 
 @app.route('/returnAdmin',methods=['GET','POST'])
 def returnAdmin():
-    return render_template('admin.html')
+    #Get Products
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            queryLiqueurs = 'SELECT L.Title FROM dbo.Liqueurs AS L'
+            cursor.execute(queryLiqueurs)
+            queryResult = cursor.fetchall()
+            products = []
+            for product in queryResult:
+                products.append(product[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    return render_template('admin.html', **locals())
         
 @app.route('/productStock',methods=['GET','POST'])
 def productStock():
@@ -379,7 +538,7 @@ def productStock():
                                 <div class="content">
                                     <div class="content-text">'''+subsidiaryStock+'''
                                     </div>
-                                    <div class="content-buttons"><a href="#" id="close-button">Aceptar</a></div>
+                                    <div class="content-buttons"><a href="/returnAdmin" id="close-button">Aceptar</a></div>
                                 </div>
                             </div>
                             <script>
@@ -1012,7 +1171,28 @@ def worstSellerGlobal():
         
 @app.route('/complain',methods=['GET','POST'])
 def complain():
-    return render_template('quejas.html')
+    
+    #Get subsidiaries
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    return render_template('quejas.html',**locals())
+
+
+
 def bestEmployeeXSubsidiary():
     subsidiaryList = subsidiaryXCountry()        
     for subsidiary in subsidiaryList:
