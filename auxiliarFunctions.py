@@ -20,12 +20,12 @@ def subsidiariesNear(username,productName,country):
     finally:
         dbConnection.close()
         
-def sendEmail(destiny,message):
+def sendEmail(destiny,message,subject):
     msg = MIMEMultipart()         
     password = "bunbury123"
     msg['From'] = "tiendabunbury@gmail.com"
     msg['To'] = destiny
-    msg['Subject'] = "Amonestación"
+    msg['Subject'] = subject
     msg.attach(MIMEText(message,'plain'))
     
     server = smtplib.SMTP('smtp.gmail.com: 587')

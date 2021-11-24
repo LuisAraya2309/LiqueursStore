@@ -109,25 +109,23 @@ INSERT INTO dbo.Food
 
 --INSERTAR USUARIOS
 --Crear direcciones para los usuarios
-DECLARE @x GEOGRAPHY;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(4.449182316702537 -75.20707212197306)',4326)
-EXEC sp_SignUp 'Luciana Garcia Sanchez','lucianags9@gmail.com',98436712,@x,19,'luciGa','Gs01182','Administrator',0;
+EXEC sp_SignUp 'Luciana Garcia Sanchez','lucianags9@gmail.com',98436712,'POINT(4.449182316702537 -75.20707212197306)',19,'luciGa','Gs01182','Administrator',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(6.183666734281075 -75.61488103166667)',4326)
-EXEC sp_SignUp 'Salome Lopez Gomez','salomelg@gmail.com',98674365,@x,20,'saloLo','salo543','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(7.078635959383407 -73.08668470228557)',4326)
-EXEC sp_SignUp 'Santiago Ramirez Rodriguez','santiagorr@gmail.com',12984323,@x,25,'santiRo','santi889','Biller',0;
+EXEC sp_SignUp 'Salome Lopez Gomez','salomelg@gmail.com',98674365,'POINT(6.183666734281075 -75.61488103166667)',20,'saloLo','salo543','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(3.4301215558889235 -76.48899146469735)',4326)
-EXEC sp_SignUp 'Antonella Mendez Brenes','antonellamb@gmail.com',98672312,@x,30,'lelaMen','lelaMen654','Consultant',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(2.4362966890611655 -76.57640250800043)',4326)
-EXEC sp_SignUp 'Samuel Sanchez Lopez','samuelsl@gmail.com',98674356,@x,45,'SamuSa','Samu123','Consultant',0;
+EXEC sp_SignUp 'Santiago Ramirez Rodriguez','santiagorr@gmail.com',12984323,'POINT(7.078635959383407 -73.08668470228557)',25,'santiRo','santi889','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(5.5199395560117726 -73.34112545341848)',4326)
-EXEC sp_SignUp 'Emiliano Martinez Garcia','emilianomg@gmail.com',98678721,@x,60,'EmiMart','Emi423','Administrator',0;
+
+EXEC sp_SignUp 'Antonella Mendez Brenes','antonellamb@gmail.com',98672312,'POINT(3.4301215558889235 -76.48899146469735)',30,'lelaMen','lelaMen654','Consultant',0;
+
+
+EXEC sp_SignUp 'Samuel Sanchez Lopez','samuelsl@gmail.com',98674356,'POINT(2.4362966890611655 -76.57640250800043)',45,'SamuSa','Samu123','Consultant',0;
+
+
+EXEC sp_SignUp 'Emiliano Martinez Garcia','emilianomg@gmail.com',98678721,'POINT(5.5199395560117726 -73.34112545341848)',60,'EmiMart','Emi423','Administrator',0;
 
 
 --INSERTAR Subsidiarias

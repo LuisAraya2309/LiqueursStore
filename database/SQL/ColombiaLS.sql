@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [ColombiaLS]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Database [ColombiaLS]    Script Date: 23/11/2021 19:15:58 ******/
 CREATE DATABASE [ColombiaLS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [ColombiaLS] SET QUERY_STORE = OFF
 GO
 USE [ColombiaLS]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,7 +102,7 @@ CREATE TABLE [dbo].[Customers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CustomerType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[CustomerType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [dbo].[CustomerType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EmployeePerSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[EmployeePerSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +131,7 @@ CREATE TABLE [dbo].[EmployeePerSubsidiary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employees]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Employees]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Employees](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EmployeeType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[EmployeeType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[EmployeeType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Errors]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Errors]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[Errors](
 	[GETDATE] [datetime] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Food]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Food]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,7 +195,7 @@ CREATE TABLE [dbo].[Food](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GreatCombinations]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[GreatCombinations]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +210,7 @@ CREATE TABLE [dbo].[GreatCombinations](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LiqueurInfo]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[LiqueurInfo]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -228,7 +228,7 @@ CREATE TABLE [dbo].[LiqueurInfo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Liqueurs]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Liqueurs]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +244,7 @@ CREATE TABLE [dbo].[Liqueurs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[PaymentTypes]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -258,7 +258,7 @@ CREATE TABLE [dbo].[PaymentTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Schedules]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Schedules]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -275,7 +275,7 @@ CREATE TABLE [dbo].[Schedules](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shippings]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Shippings]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -291,7 +291,7 @@ CREATE TABLE [dbo].[Shippings](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Stock]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Stock]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +307,7 @@ CREATE TABLE [dbo].[Stock](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Subsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Subsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -322,7 +322,7 @@ CREATE TABLE [dbo].[Subsidiary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaxesReport]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[TaxesReport]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -337,7 +337,7 @@ CREATE TABLE [dbo].[TaxesReport](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transactions]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Transactions]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -358,7 +358,7 @@ CREATE TABLE [dbo].[Transactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TransactionType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[TransactionType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -372,7 +372,7 @@ CREATE TABLE [dbo].[TransactionType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -478,7 +478,7 @@ REFERENCES [dbo].[Users] ([Id])
 GO
 ALTER TABLE [dbo].[Transactions] CHECK CONSTRAINT [FK_Transactions_Users]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AddEmployee]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AddEmployee]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -559,7 +559,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AddNewProduct]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_AddNewProduct]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -590,129 +590,130 @@ BEGIN
             DECLARE @idUser INT =(SELECT U.Id FROM dbo.Users AS U WHERE Username = @inUser);
                     
             BEGIN TRANSACTION TSaveMov
+				
+				IF NOT EXISTS (SELECT * FROM dbo.Liqueurs AS L WHERE L.Title = @inTitle)
+					BEGIN
+						IF @idLiqueur IS NULL
+						BEGIN 
+							INSERT INTO dbo.Liqueurs(
+									Title,
+									Price,
+									Enabled
+								)    
 
-                IF @idLiqueur IS NULL
-                    BEGIN 
-                        INSERT INTO dbo.Liqueurs(
-                                Title,
-                                Price,
-                                Enabled
-                            )    
+							VALUES(
+								@inTitle,
+								@inPrice,
+								1
+							)
 
-                        VALUES(
-                            @inTitle,
-                            @inPrice,
-                            1
-                        )
+							INSERT INTO dbo.LiqueurInfo
+								(
+								IdLiqueur,
+								AgedType,
+								Age,
+								Origin,
+								Photo
+								)
 
-                        INSERT INTO dbo.LiqueurInfo
-                            (
-                            IdLiqueur,
-                            AgedType,
-                            Age,
-                            Origin,
-                            Photo
-                            )
+								VALUES
+								(
+								(SELECT MAX(Id) FROM dbo.Liqueurs),
+								@inAgedType,
+								@inYears,
+								@inOrigin,
+								@inPhoto
+								)
 
-                            VALUES
-                            (
-                            (SELECT MAX(Id) FROM dbo.Liqueurs),
-                            @inAgedType,
-                            @inYears,
-                            @inOrigin,
-                            @inPhoto
-                            )
-
-                        INSERT INTO dbo.Stock
-                            (
-                                IdLiqueur,
-                                IdSubsidiary,
-                                Amount
-                            )
-                        VALUES
-                            (
-                                (SELECT MAX(Id) FROM dbo.Liqueurs),
-                                @idSubsidiary,
-                                @inAmount
-                            )
+							INSERT INTO dbo.Stock
+								(
+									IdLiqueur,
+									IdSubsidiary,
+									Amount
+								)
+							VALUES
+								(
+									(SELECT MAX(Id) FROM dbo.Liqueurs),
+									@idSubsidiary,
+									@inAmount
+								)
 						
 
-						IF @inFood IS NOT NULL
-							BEGIN
-								INSERT INTO dbo.Food
-									(
-										Title
-									)
-								VALUES
-									(
-										@inFood
-									)
+							IF @inFood IS NOT NULL
+								BEGIN
+									INSERT INTO dbo.Food
+										(
+											Title
+										)
+									VALUES
+										(
+											@inFood
+										)
 
 								
-								INSERT INTO dbo.GreatCombinations
-									(
-										IdLiqueur,
-										IdFood
-									)
-								VALUES
-									(
-										(SELECT MAX(Id) FROM dbo.Liqueurs),
-										(SELECT MAX(Id) FROM dbo.Food)
-									)
-							END
-                    END
+									INSERT INTO dbo.GreatCombinations
+										(
+											IdLiqueur,
+											IdFood
+										)
+									VALUES
+										(
+											(SELECT MAX(Id) FROM dbo.Liqueurs),
+											(SELECT MAX(Id) FROM dbo.Food)
+										)
+								END
+						END
 
-                ELSE
-                    BEGIN
+					ELSE
+						BEGIN
 
-                        IF EXISTS(SELECT Id FROM dbo.Stock AS S WHERE S.IdLiqueur = @idLiqueur AND S.IdSubsidiary = @idSubsidiary)
-                            BEGIN
-                                UPDATE dbo.Stock
-                                    SET
-                                        Amount  = Amount + @inAmount
-                                WHERE IdLiqueur = @idLiqueur AND IdSubsidiary = @idSubsidiary;
-                            END
-                        ELSE
-                            BEGIN
-                                INSERT INTO dbo.Stock
-                                    VALUES(
-                                        @idLiqueur,
-                                        @idSubsidiary,
-                                        @inAmount
-                                    )
-                            END
+							IF EXISTS(SELECT Id FROM dbo.Stock AS S WHERE S.IdLiqueur = @idLiqueur AND S.IdSubsidiary = @idSubsidiary)
+								BEGIN
+									UPDATE dbo.Stock
+										SET
+											Amount  = Amount + @inAmount
+									WHERE IdLiqueur = @idLiqueur AND IdSubsidiary = @idSubsidiary;
+								END
+							ELSE
+								BEGIN
+									INSERT INTO dbo.Stock
+										VALUES(
+											@idLiqueur,
+											@idSubsidiary,
+											@inAmount
+										)
+								END
                         
-                    END
+						END
                 
+					INSERT INTO dbo.Transactions
+						(
+							IdTransactionType,
+							IdSubsidiary,
+							IdUser,
+							IdLiqueur,
+							IdPaymentType,
+							TranDate,
+							Discount,
+							Price
+						)
+						VALUES
+						(
+							1,
+							@idSubsidiary,
+							@idUser,
+							(SELECT MAX(Id) FROM dbo.Liqueurs),
+							1,
+							GETDATE(),
+							0.0,
+							0.0
+						)
                 
-
-
-                INSERT INTO dbo.Transactions
-                    (
-                        IdTransactionType,
-                        IdSubsidiary,
-                        IdUser,
-                        IdLiqueur,
-                        IdPaymentType,
-                        TranDate,
-                        Discount,
-                        Price
-                    )
-                    VALUES
-                    (
-                        1,
-                        @idSubsidiary,
-                        @idUser,
-                        (SELECT MAX(Id) FROM dbo.Liqueurs),
-                        1,
-                        GETDATE(),
-                        0.0,
-                        0.0
-                    )
+					COMMIT TRANSACTION TSaveMov
+					END
                 
-            COMMIT TRANSACTION TSaveMov
-                
-
+				ELSE
+					SELECT @OutResultCode = 1;
 
             SELECT @OutResultCode;
 
@@ -742,7 +743,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_bestEmployee]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_bestEmployee]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -792,7 +793,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_bestEmployeeXSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_bestEmployeeXSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -846,7 +847,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_BestSold]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_BestSold]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -948,7 +949,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_buyProduct]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_buyProduct]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1137,7 +1138,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_CustomerDiscount]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_CustomerDiscount]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1197,7 +1198,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_CustomerEmail]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_CustomerEmail]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1239,7 +1240,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_EmployeesPerSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_EmployeesPerSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1288,7 +1289,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getDates]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getDates]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1339,7 +1340,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getPaymentType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getPaymentType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1387,7 +1388,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ProductStock]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ProductStock]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1447,7 +1448,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_productXSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_productXSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1496,7 +1497,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXCountry]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXCountry]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1554,7 +1555,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXDate]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXDate]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1616,7 +1617,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXDateXPaymentType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXDateXPaymentType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1683,7 +1684,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXPaymentType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXPaymentType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1743,7 +1744,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1802,7 +1803,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiaryXProduct]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_salesXSubsidiaryXProduct]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1861,7 +1862,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SignIn]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_SignIn]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1918,11 +1919,12 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SignUp]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_SignUp]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[sp_SignUp]
 	@inName VARCHAR(50),
@@ -1943,46 +1945,42 @@ BEGIN
 				BEGIN
 
 					DECLARE @Address GEOGRAPHY = GEOGRAPHY::STGeomFromText(@inAddress,4326)
-					BEGIN TRANSACTION TSaveMov
 
-						INSERT INTO dbo.Users
-							(
-								RoleType,
-								Username,
-								Keyword
-							)
-							VALUES
-							(	
-								@inRoleType,
-								@inUsername,
-								@inPassword
-							)
+					INSERT INTO dbo.Users
+						(
+							RoleType,
+							Username,
+							Keyword
+						)
+						VALUES
+						(	
+							@inRoleType,
+							@inUsername,
+							@inPassword
+						)
 
-						INSERT INTO dbo.Customers
-							(
-								IdUser,
-								IdUserType,
-								Title,
-								Email,
-								Phone,
-								Address,
-								Age
+					INSERT INTO dbo.Customers
+						(
+							IdUser,
+							IdUserType,
+							Title,
+							Email,
+							Phone,
+							Address,
+							Age
 				
-							)
-							VALUES
-							(
-								(SELECT MAX(Id) FROM dbo.Users),
-								1,
-								@inName,
-								@inEmail,
-								@inPhone,
-								@inAddress,
-								@inAge
-							)
+						)
+						VALUES
+						(
+							(SELECT MAX(Id) FROM dbo.Users),
+							1,
+							@inName,
+							@inEmail,
+							@inPhone,
+							@inAddress,
+							@inAge
+						)
 
-						
-
-					COMMIT TRANSACTION TSaveMov;
 				END
 			ELSE
 				BEGIN
@@ -1995,10 +1993,6 @@ BEGIN
 
 		END TRY
 		BEGIN CATCH
-
-				IF @@Trancount>0 
-					ROLLBACK TRANSACTION TSaveMov;
-
 				INSERT INTO dbo.Errors	VALUES (
 					SUSER_SNAME(),
 					ERROR_NUMBER(),
@@ -2019,7 +2013,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_SubsidiaryAvailable]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_SubsidiaryAvailable]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2108,7 +2102,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_subsidiaryXCountry]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_subsidiaryXCountry]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2155,7 +2149,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_titleProductTransaction]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_titleProductTransaction]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2206,7 +2200,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_titleProductTransactionXSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_titleProductTransactionXSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2260,7 +2254,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_UpdatePrice]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_UpdatePrice]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2318,7 +2312,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewEmployee]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewEmployee]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2370,7 +2364,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewEmployeesPerSubsidiary]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewEmployeesPerSubsidiary]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2421,7 +2415,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewPaymentType]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewPaymentType]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2470,7 +2464,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewPrice]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewPrice]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2521,7 +2515,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewProduct]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewProduct]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2583,7 +2577,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ViewSchedule]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_ViewSchedule]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2635,7 +2629,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_WorstSold]    Script Date: 23/11/2021 11:32:17 ******/
+/****** Object:  StoredProcedure [dbo].[sp_WorstSold]    Script Date: 23/11/2021 19:15:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

@@ -111,25 +111,23 @@ INSERT INTO dbo.Food
 
 --INSERTAR USUARIOS
 --Crear direcciones para los usuarios
-DECLARE @x GEOGRAPHY;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-34.6171791174319 -58.372791859151846)',4326)
-EXEC sp_SignUp 'Leonardo Gaspar Marino','leonardogm@gmail.com',92740019,@x,19,'leonardo19','admin123','Administrator',0;
+EXEC sp_SignUp 'Leonardo Gaspar Marino','leonardogm@gmail.com',92740019,'POINT(-34.6171791174319 -58.372791859151846)',19,'leonardo19','admin123','Administrator',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-32.959879442998016 -60.66338432094325)',4326)
-EXEC sp_SignUp 'Sahori Solano Bife','sahorisb@gmail.com',73947267,@x,20,'sahori67','ssb67','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-31.395840614177267 -64.18614340241018)',4326)
-EXEC sp_SignUp 'Mauricio Milei Donoso','mauriciomd@gmail.com',23979022,@x,25,'mauricio22','mmd25','Biller',0;
+EXEC sp_SignUp 'Sahori Solano Bife','sahorisb@gmail.com',73947267,'POINT(-32.959879442998016 -60.66338432094325)',20,'sahori67','ssb67','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-41.15007962671213 -71.30479444427928)',4326)
-EXEC sp_SignUp 'Manfred Pozuelo Villalta','manfredpv@gmail.com',30293012,@x,30,'manfred12','mpv30','Consultant',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-43.25340797219106 -65.30657559667006)',4326)
-EXEC sp_SignUp 'Carlos Alvarado Jimenez','carlosaj@gmail.com',93453424,@x,45,'carlos24','caj45','Consultant',0;
+EXEC sp_SignUp 'Mauricio Milei Donoso','mauriciomd@gmail.com',23979022,'POINT(-31.395840614177267 -64.18614340241018)',25,'mauricio22','mmd25','Biller',0;
 
-SET @x = GEOGRAPHY::STGeomFromText('POINT(-38.012006201509955 -57.55854033906109)',4326)
-EXEC sp_SignUp 'Patricia Mora Delao','patriciamd@gmail.com',12834877,@x,60,'patricia77','pmd60','Administrator',0;
+
+EXEC sp_SignUp 'Manfred Pozuelo Villalta','manfredpv@gmail.com',30293012,'POINT(-41.15007962671213 -71.30479444427928)',30,'manfred12','mpv30','Consultant',0;
+
+
+EXEC sp_SignUp 'Carlos Alvarado Jimenez','carlosaj@gmail.com',93453424,'POINT(-43.25340797219106 -65.30657559667006)',45,'carlos24','caj45','Consultant',0;
+
+
+EXEC sp_SignUp 'Patricia Mora Delao','patriciamd@gmail.com',12834877,'POINT(-38.012006201509955 -57.55854033906109)',60,'patricia77','pmd60','Administrator',0;
 
 
 --INSERTAR Subsidiarias
@@ -337,7 +335,7 @@ SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\On
 EXEC sp_AddEmployee 'BuenosAires','Gerente','Diego Gutierrez Molina','diegogm@gmail.com',64039278,30,@imagenEmpleado,0
 
 SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\monica.jpg',SINGLE_BLOB) AS Imagen);
-EXEC sp_AddEmployee 'Rosario','Gerente','Monica Alfaro Parrales','monicaap@gmail.com',20495638,37,@imagenEmpleado,0
+EXEC sp_AddEmployee 'Rosario','Gerente','Monica Alfaro Parrales','monicaap211@gmail.com',20495638,37,@imagenEmpleado,0
 
 SET @imagenEmpleado = (SELECT BulkColumn FROM OPENROWSET(BULK 'C:\Users\luist\OneDrive\Escritorio\LiqueursStore\static\images\roberto.jpg',SINGLE_BLOB) AS Imagen);
 EXEC sp_AddEmployee 'Mendoza','Gerente','Roberto Vega Morales','robertovm@gmail.com',92049502,42,@imagenEmpleado,0

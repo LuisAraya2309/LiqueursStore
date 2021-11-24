@@ -333,7 +333,7 @@ def buyProduct():
             email = cursor.fetchall()[0][0]
             message = "Su compra del artículo " + productName + " se ha realizado con éxito.\n"
             message += "Su envío se acaba de realizar, por favor esté atento en estos días a la llegada del producto."
-            sendEmail(email,message)
+            sendEmail(email,message,'Confirmación de compra')
             
             
     except Exception as e:
@@ -1078,7 +1078,7 @@ def doComplain():
                 for key in suggestInformation:
                     message+=(str(key) + ":" + str(suggestInformation[key]) + ".\n")
                 
-                sendEmail(email,message)
+                sendEmail(email,message,'Comentario')
                 
                 
                     
