@@ -472,7 +472,24 @@ def editPrice():
     
 @app.route('/returnAddProduct',methods=['GET','POST'])
 def returnAddNewProduct():
-    return render_template('addProduct.html')
+    
+    dbConnection = connectToDatabase(country)
+    try:
+        with dbConnection.cursor() as cursor:
+            querySubisidiary = 'SELECT S.Title FROM dbo.Subsidiary AS S'
+            cursor.execute(querySubisidiary)
+            queryResult = cursor.fetchall()
+            subsidiaries = []
+            for subsidiary in queryResult:
+                subsidiaries.append(subsidiary[0])
+    except Exception as e:
+        print(e)
+        return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'
+
+    finally:
+        dbConnection.close()
+        
+    return render_template('addProduct.html',**locals())
     
   
 @app.route('/addProduct',methods=['GET','POST'])
@@ -507,7 +524,7 @@ def addNewProduct():
             if outResultCode != 1:
                 return render_template('addProduct.html')+ '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
-                                    <div class="content-text">El producto fue ingresado con exito.
+                                    <div class="content-text">El producto fue ingresado con exito.</div>
                                     <div class="content-buttons"><a href="/returnAdmin" id="close-button">Aceptar</a></div>
                                 </div>
                             </div>
@@ -523,7 +540,7 @@ def addNewProduct():
             else:
                 return render_template('addProduct.html') + '''<div class="window-notice" id="window-notice" >
                                 <div class="content">
-                                    <div class="content-text">Error al insertar el producto. Vuelva a intentarlo.
+                                    <div class="content-text">Error al insertar el producto. Vuelva a intentarlo.</div>
                                     <div class="content-buttons"><a href="/returnAdmin" id="close-button">Aceptar</a></div>
                                 </div>
                             </div>
@@ -1076,6 +1093,7 @@ def doComplain():
         
 @app.route('/beginSignUp',methods=['GET','POST'])
 def signUp():
+        
     return render_template('signUp.html')
 
 @app.route('/ValidateSignUp',methods=['GET','POST'])
@@ -1103,22 +1121,30 @@ def validateSignUp():
             if validUser != 1:
                 return render_template('login.html')
             else:
-                return render_template('signUp.html') + '''<div class="window-notice" id="window-notice" >
-                                <div class="content">
-                                    <div class="content-text">El nombre de usuario ya existe. Vuelva a ingresar uno nuevo.
-                                    <a href="/">Registrarse</a></div>
-                                    <div class="content-buttons"><a href="/" id="close-button">Aceptar</a></div>
-                                </div>
+                return '''
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                        <link href="./static/css/admin.css" rel="stylesheet" />
+                        <title>Modificar Inventario</title>
+                    </head>
+                    <div class="window-notice" id="window-notice" >
+                        <div class="content">
+                            <div class="content-text">El nombre de usuario ya existe. Ingrese uno nuevo
                             </div>
-                            <script>
-                                        let close_button = document.getElementById('close-button');
-                                            close_button.addEventListener("click", function(e) {
-                                            e.preventDefault();
-                                            document.getElementById("window-notice").style.display = "none";
-                                            window.location.href="/";
-                                        });
-                            </script>
-                            '''
+                            <div class="content-buttons"><a href="/beginSignUp" id="close-button">Aceptar</a></div>
+                        </div>
+                    </div>
+                    <script>
+                                let close_button = document.getElementById('close-button');
+                                    close_button.addEventListener("click", function(e) {
+                                    e.preventDefault();
+                                    document.getElementById("window-notice").style.display = "none";
+                                    window.location.href="/beginSignUp";
+                                });
+                    </script>
+                    '''
             
     except Exception as e:
         return str(e) + 'Exception error. <a href="/">Intente de nuevo.</a>'

@@ -19,13 +19,17 @@
                 <div class="v1148_167"></div>
                 <span class="v1148_170">Agregar producto</span>
                 <input type = "Submit" class="v1148_171" value= "Insertar producto"></input>
-                <input class="v1151_140" id = "Subsidiaria" name = "Subsidiaria"></input>
+                <select class="v1151_140" id = "Subsidiaria" name = "Subsidiaria">
+                    {% for subsidiary in subsidiaries%}
+                        <option>{{subsidiary}}</option>
+                    {% endfor%}
+                </select>
                 <input class="v1151_146" id = "Nombre" name = "Nombre"></input>
-                <input class="v1151_143" id = "Precio" name = "Precio"></input>
+                <input class="v1151_143" id = "Precio" name = "Precio" pattern = "^[0-9]*"></input>
                 <input type = "file" class="v1151_141" id = "Foto" name = "Foto" accept=".jpg"></input>
-                <input class="v1151_142" id = "Años" name = "Años"></input>
+                <input class="v1151_142" id = "Años" name = "Años" pattern = "^[0-9]*" ></input>
                 <input class="v1151_147"  id = "Añejado" name = "Añejado"></input>
-                <input class="v1151_144" id = "Cantidad" name = "Cantidad"></input>
+                <input class="v1151_144" id = "Cantidad" name = "Cantidad" pattern = "^[0-9]*"></input>
                 <input class="v1151_148" id = "Origen" name = "Origen"></input>
                 <input class="inputComida" id = "Comida" name = "Comida"></input>
                 <span class="v1151_150">Subsidiaria</span>
